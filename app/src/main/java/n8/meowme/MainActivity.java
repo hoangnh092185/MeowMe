@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Typeface mainFontTextView = Typeface.createFromAsset(getAssets(), "fonts/anomalyDemo.ttf");
             mMainActivityTextView.setTypeface(mainFontTextView);
+
+        Typeface mainFontButtonView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
+        mMainActivityButton.setTypeface(mainFontButtonView);
     }
 
     @Override

@@ -11,16 +11,18 @@
         android:id="@+id/imageView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/background" />
+        android:src="@drawable/background"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MeowMe"
+        android:textColor="@color/colorAccent"
         android:id="@+id/mainActivityTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="70sp"
         android:textStyle="bold" />
 
     <Button
@@ -30,7 +32,9 @@
         android:id="@+id/mainActivityButton"
         android:layout_alignBottom="@+id/imageView"
         android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_alignStart="@+id/imageView"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
