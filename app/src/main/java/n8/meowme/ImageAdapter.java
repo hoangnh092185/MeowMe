@@ -17,15 +17,21 @@ public class ImageAdapter extends BaseAdapter {
         mContext = c;
     }
 
-    public int getOption1Count() {
-        return mOption1ImageView.length;
+    public int getCount(){
+        return mThumbIds.length;
     }
-    public int getOption2Count() {
-        return mOption2ImageView.length;
-    }
-    public int getOption3Count() {
-        return mOption3ImageView.length;
-    }
+
+//    public int getOption1Count() {
+//        return mOption1ImageView.length;
+//    }
+//
+//    public int getOption2Count() {
+//        return mOption2ImageView.length;
+//    }
+//
+//    public int getOption3Count() {
+//        return mOption3ImageView.length;
+//    }
 
     public Object getItem(int position) {
         return null;
@@ -53,24 +59,27 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     // references to our images
-    private Integer[] mOption1ImageView = {
+    private Integer[] mThumbIds = {
             R.drawable.option1image01, R.drawable.option1image02,
             R.drawable.option1image03, R.drawable.option1image04,
             R.drawable.option1image05, R.drawable.option1image06,
             R.drawable.option1image07, R.drawable.option1image08,
             R.drawable.option1image09, R.drawable.option1image10,
     };
-    private Integer[] mOption2ImageView = {
-            R.drawable.option2image01, R.drawable.option2image02,
-            R.drawable.option2image03, R.drawable.option2image04,
-            R.drawable.option2image05, R.drawable.option2image06,
-            R.drawable.option2image07, R.drawable.option2image08,
-            R.drawable.option2image09, R.drawable.option2image10,
-    };
-    private Integer[] mOption3ImageView = {
-            R.drawable.option3image01, R.drawable.option3image02,
-            R.drawable.option3image03, R.drawable.option3image04,
-            R.drawable.option3image05, R.drawable.option3image06,
-            R.drawable.option3image07, R.drawable.option3image08,
-            R.drawable.option3image09, R.drawable.option3image10,
-    };
+//    private Integer[] mOption2ImageView = {
+//            R.drawable.option2image01, R.drawable.option2image02,
+//            R.drawable.option2image03, R.drawable.option2image04,
+//            R.drawable.option2image05, R.drawable.option2image06,
+//            R.drawable.option2image07, R.drawable.option2image08,
+//            R.drawable.option2image09, R.drawable.option2image10,
+//    };
+//    private Integer[] mOption3ImageView = {
+//            R.drawable.option3image01, R.drawable.option3image02,
+//            R.drawable.option3image03, R.drawable.option3image04,
+//            R.drawable.option3image05, R.drawable.option3image06,
+//            R.drawable.option3image07, R.drawable.option3image08,
+//            R.drawable.option3image09, R.drawable.option3image10,
+//    };
+
+
+}
