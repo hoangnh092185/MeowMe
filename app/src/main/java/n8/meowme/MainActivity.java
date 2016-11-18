@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.mainActivityTextView) TextView mMainActivityTextView;
     @Bind(R.id.mainActivityButton) Button mMainActivityButton;
+    @Bind(R.id.mainActivityEditText) EditText mMainActivityEditText;
 
 
 
@@ -38,8 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == mMainActivityButton){
-//           Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
+          String inputName = mMainActivityEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, UserInputActivity.class);
+            intent.putExtra("inputName", inputName);
             startActivity(intent);
         }
     }

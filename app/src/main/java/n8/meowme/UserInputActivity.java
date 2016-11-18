@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -15,6 +16,7 @@ import butterknife.ButterKnife;
 public class UserInputActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.userInputGroup) RadioGroup mRadioGroup;
     @Bind(R.id.userInputButton) Button mUserInputButton;
+    @Bind(R.id.userInputTextView) TextView mUserInputTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,11 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
 
         Typeface userInputButtonView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
         mUserInputButton.setTypeface(userInputButtonView);
+
+        Intent intent = getIntent();
+        String inputName = intent.getStringExtra("inputName");
+        mUserInputTextView.setText("Welcome "+ inputName + ". Chose and I'll meow you there!");
+
     }
 
 

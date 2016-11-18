@@ -8,7 +8,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose and I&apos;ll meow you there."
         android:id="@+id/userInputTextView"
         android:paddingBottom="10dp"
         android:layout_alignParentLeft="true"
