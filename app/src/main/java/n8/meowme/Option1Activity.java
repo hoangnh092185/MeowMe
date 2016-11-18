@@ -11,7 +11,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class Option1Activity extends AppCompatActivity {
-    @Bind(R.id.gridView) GridView mGridView;
+    @Bind(R.id.option1GridView) GridView mGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

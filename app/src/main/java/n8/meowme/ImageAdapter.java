@@ -7,29 +7,13 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-/**
- * Created by Guest on 11/18/16.
- */
+
 public class ImageAdapter extends BaseAdapter {
-
-    // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.option1image01, R.drawable.option1image02,
-            R.drawable.option1image03, R.drawable.option1image04,
-            R.drawable.option1image05, R.drawable.option1image06,
-            R.drawable.option1image07, R.drawable.option1image08,
-            R.drawable.option1image09, R.drawable.option1image10,
-    };
-
     private Context mContext;
 
-    public ImageAdapter(Context c) {
-        mContext = c;
-    }
+    public ImageAdapter(Context c) {mContext = c;}
 
-    public int getCount() {
-        return mThumbIds.length;
-    }
+    public int getCount() {return mThumbIds.length;}
 
     public Object getItem(int position) {
         return null;
@@ -45,7 +29,7 @@ public class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(120, 120));
+            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(2,2, 2,2);
         } else {
@@ -55,6 +39,15 @@ public class ImageAdapter extends BaseAdapter {
         imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
+
+    // references to our images
+    private Integer[] mThumbIds = {
+            R.drawable.option1image01, R.drawable.option1image02,
+            R.drawable.option1image03, R.drawable.option1image04,
+            R.drawable.option1image05, R.drawable.option1image06,
+            R.drawable.option1image07, R.drawable.option1image08,
+            R.drawable.option1image09, R.drawable.option1image10,
+    };
 
 //    private Integer[] mOption2ImageView = {
 //            R.drawable.option2image01, R.drawable.option2image02,
