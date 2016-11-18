@@ -23,5 +23,14 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meow Me"
+        android:id="@+id/mainActivityButton"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+
 
 </RelativeLayout>
