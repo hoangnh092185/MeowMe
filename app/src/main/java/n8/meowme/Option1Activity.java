@@ -22,9 +22,10 @@ public class Option1Activity extends AppCompatActivity {
         mGridView.setAdapter(new ImageAdapter(this));
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(Option1Activity.this, "Hello world!", Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(Option1Activity.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
