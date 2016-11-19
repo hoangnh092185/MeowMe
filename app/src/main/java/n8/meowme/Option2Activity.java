@@ -15,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class Option2Activity extends AppCompatActivity {
-    @Bind(R.id.option2GridView) GridView mGridView;
+    @Bind(R.id.option2GridView) GridView mOption2GridView;
 
 
     @Override
@@ -24,9 +24,9 @@ public class Option2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_option2);
         ButterKnife.bind(this);
 
-        mGridView.setAdapter(new Option2Adapter(this));
+        mOption2GridView.setAdapter(new Option2Adapter(this));
 
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mOption2GridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Toast.makeText(Option2Activity.this, "" + position,
@@ -80,22 +80,6 @@ public class Option2Activity extends AppCompatActivity {
                 R.drawable.option2image07, R.drawable.option2image08,
                 R.drawable.option2image09, R.drawable.option2image10,
         };
-
-    //    private Integer[] mOption2ImageView = {
-    //            R.drawable.option2image01, R.drawable.option2image02,
-    //            R.drawable.option2image03, R.drawable.option2image04,
-    //            R.drawable.option2image05, R.drawable.option2image06,
-    //            R.drawable.option2image07, R.drawable.option2image08,
-    //            R.drawable.option2image09, R.drawable.option2image10,
-    //    };
-    //    private Integer[] mOption3ImageView = {
-    //            R.drawable.option3image01, R.drawable.option3image02,
-    //            R.drawable.option3image03, R.drawable.option3image04,
-    //            R.drawable.option3image05, R.drawable.option3image06,
-    //            R.drawable.option3image07, R.drawable.option3image08,
-    //            R.drawable.option3image09, R.drawable.option3image10,
-    //    };
-
 
     }
 }

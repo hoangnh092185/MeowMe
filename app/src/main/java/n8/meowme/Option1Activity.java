@@ -15,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class Option1Activity extends AppCompatActivity {
-    @Bind(R.id.option1GridView) GridView mGridView;
+    @Bind(R.id.option1GridView) GridView mOption1GridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,9 @@ public class Option1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_option1);
         ButterKnife.bind(this);
 
-        mGridView.setAdapter(new Option1Adapter(this));
+        mOption1GridView.setAdapter(new Option1Adapter(this));
 
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mOption1GridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Toast.makeText(Option1Activity.this, "" + position,
@@ -79,22 +79,6 @@ public class Option1Activity extends AppCompatActivity {
                 R.drawable.option1image07, R.drawable.option1image08,
                 R.drawable.option1image09, R.drawable.option1image10,
         };
-
-    //    private Integer[] mOption2ImageView = {
-    //            R.drawable.option2image01, R.drawable.option2image02,
-    //            R.drawable.option2image03, R.drawable.option2image04,
-    //            R.drawable.option2image05, R.drawable.option2image06,
-    //            R.drawable.option2image07, R.drawable.option2image08,
-    //            R.drawable.option2image09, R.drawable.option2image10,
-    //    };
-    //    private Integer[] mOption3ImageView = {
-    //            R.drawable.option3image01, R.drawable.option3image02,
-    //            R.drawable.option3image03, R.drawable.option3image04,
-    //            R.drawable.option3image05, R.drawable.option3image06,
-    //            R.drawable.option3image07, R.drawable.option3image08,
-    //            R.drawable.option3image09, R.drawable.option3image10,
-    //    };
-
 
     }
 }
