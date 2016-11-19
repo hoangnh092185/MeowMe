@@ -5,10 +5,20 @@
     android:layout_height="match_parent"
     tools:context="n8.meowme.UserInputActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userInputTextView"
+        android:textColor="@color/colorSecondaryText"
         android:paddingBottom="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
@@ -73,11 +83,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Meow Me There"
+        android:text="Meow Me"
+        android:textColor="@color/colorPrimaryText"
         android:id="@+id/userInputButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textSize="40sp"
         android:textStyle="bold" />
+
 
 </RelativeLayout>

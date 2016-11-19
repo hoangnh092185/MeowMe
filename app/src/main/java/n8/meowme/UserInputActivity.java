@@ -18,6 +18,8 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.userInputButton) Button mUserInputButton;
     @Bind(R.id.userInputTextView) TextView mUserInputTextView;
 
+    private String userInputName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +31,14 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         Typeface userInputButtonView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
         mUserInputButton.setTypeface(userInputButtonView);
 
+        Typeface userInputTextView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
+        mUserInputTextView.setTypeface(userInputTextView);
+
         Intent intent = getIntent();
-        String inputName = intent.getStringExtra("inputName");
-        mUserInputTextView.setText("Welcome "+ inputName + ". Chose and I'll meow you there!");
+
+            String inputName = intent.getStringExtra("inputName");
+            userInputName = inputName;
+            mUserInputTextView.setText("Welcome "+ userInputName + ". Choose and I'll meow you there!");
 
     }
 
