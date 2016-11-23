@@ -9,18 +9,12 @@
         android:id="@+id/option1GridView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:columnWidth="90dp"
+        android:columnWidth="200dp"
         android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="1dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"
-        />
+        android:gravity="center" />
 
-    <ImageView
-        android:id="@+id/expanded_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
 
 </RelativeLayout>

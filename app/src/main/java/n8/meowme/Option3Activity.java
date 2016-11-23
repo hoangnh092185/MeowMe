@@ -59,9 +59,9 @@ public class Option3Activity extends AppCompatActivity {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+                imageView.setLayoutParams(new GridView.LayoutParams(800, 400));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setPadding(2,2, 2,2);
+                imageView.setPadding(1,1, 1,1);
             } else {
                 imageView = (ImageView) convertView;
             }
