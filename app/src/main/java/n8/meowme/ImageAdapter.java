@@ -76,9 +76,9 @@ public class ImageAdapter extends BaseAdapter {
     private Integer[] mThumbIds = {
             R.drawable.option1image01, R.drawable.option1image02,
             R.drawable.option1image03, R.drawable.option1image04,
-//            R.drawable.option1image05, R.drawable.option1image06,
-//            R.drawable.option1image07, R.drawable.option1image08,
-//            R.drawable.option1image09, R.drawable.option1image10,
+            R.drawable.option1image05, R.drawable.option1image06,
+            R.drawable.option1image07, R.drawable.option1image08,
+            R.drawable.option1image09, R.drawable.option1image10,
     };
     private Integer[] mIntrovertImageGridView = {
             R.drawable.option2image01, R.drawable.option2image02,
