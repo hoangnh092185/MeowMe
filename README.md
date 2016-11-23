@@ -1,7 +1,7 @@
 # MeowMe
 
-MeowMe is a simple app for cat lover to scroll through images base on user inputs. Eventually the app will alow user to customized the image and save to it to the user account.
-The goal of this app is to use Petfinder api and display search image using user input parameters.
+MeowMe is a simple app for cat lover to scroll through images of adoptable pet at their local area. The app will use Petfinder api to call informations from database of adoptable pets and display it base on user filter parameters.
+ The goals is to have the user be able to customize the apps, and to increase exposure of much needed adoptable feline friends.
 
 ## Prerequisites
 

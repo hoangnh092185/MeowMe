@@ -15,7 +15,6 @@ public class ImageAdapter extends BaseAdapter {
 
     private Context mContext;
     private String mInputSelection;
-//    private Integer[] mThumbIds;
 
     public ImageAdapter(Context c, String inputSelection) {
         Log.v("imageAdapter", inputSelection);
@@ -95,6 +94,5 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.option3image07, R.drawable.option3image08,
             R.drawable.option3image09, R.drawable.option3image10,
     };
-
 
 }
