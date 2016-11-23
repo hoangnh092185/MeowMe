@@ -42,7 +42,6 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-
     @Override
     public void onClick(View v) {
         Intent intent;
@@ -50,16 +49,22 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         if(v == mUserInputButton){
             int selectId = mRadioGroup.getCheckedRadioButtonId();
             switch (selectId){
-                case R.id.option1RadioButton:
+                case R.id.KillingTimeRadioButton:
+                    String killingTime = "killingTime";
                     intent = new Intent(UserInputActivity.this, Option1Activity.class);
+                    intent.putExtra("inputSelection", killingTime);
                     startActivity(intent);
                     break;
-                case R.id.option2RadioButton:
-                    intent = new Intent(UserInputActivity.this, Option2Activity.class);
+                case R.id.IntrovertModeRadioButton:
+                    String introvertMode = "introvertMode";
+                    intent = new Intent(UserInputActivity.this, Option1Activity.class);
+                    intent.putExtra("inputSelection", introvertMode);
                     startActivity(intent);
                     break;
-                case R.id.option3RadioButton:
-                    intent = new Intent(UserInputActivity.this, Option3Activity.class);
+                case R.id.DeathByCutenessRadioButton:
+                    String deathByCuteness = "deathByCuteness";
+                    intent = new Intent(UserInputActivity.this, Option1Activity.class);
+                    intent.putExtra("inputSelection", deathByCuteness);
                     startActivity(intent);
                     break;
             }
