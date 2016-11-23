@@ -18,7 +18,7 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.userInputButton) Button mUserInputButton;
     @Bind(R.id.userInputTextView) TextView mUserInputTextView;
 
-    private String userInputName = "";
+    private String userInputName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,11 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         String inputName = intent.getStringExtra("inputName");
         userInputName = inputName;
-        mUserInputTextView.setText("Welcome "+ userInputName + ". Choose and I'll meow you there!");
+        if(userInputName == null){
+            mUserInputTextView.setText("Welcome!!. Choose and I'll meow you there!");
+        }else {
+            mUserInputTextView.setText("Welcome "+ userInputName + ". Choose and I'll meow you there!");
+        }
 
     }
 
