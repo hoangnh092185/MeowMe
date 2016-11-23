@@ -35,10 +35,9 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         mUserInputTextView.setTypeface(userInputTextView);
 
         Intent intent = getIntent();
-
-            String inputName = intent.getStringExtra("inputName");
-            userInputName = inputName;
-            mUserInputTextView.setText("Welcome "+ userInputName + ". Choose and I'll meow you there!");
+        String inputName = intent.getStringExtra("inputName");
+        userInputName = inputName;
+        mUserInputTextView.setText("Welcome "+ userInputName + ". Choose and I'll meow you there!");
 
     }
 

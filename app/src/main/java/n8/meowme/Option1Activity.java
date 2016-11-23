@@ -63,7 +63,7 @@ public class Option1Activity extends AppCompatActivity {
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent, String inputSelection) {
             ImageView imageView;
-
+            String InputSelection = inputSelection;
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
@@ -72,19 +72,19 @@ public class Option1Activity extends AppCompatActivity {
                 imageView.setPadding(1,1, 1,1);
             } else {
                 imageView = (ImageView) convertView;
-                switch (inputSelection) {
-                    case "killingTime":
-                        imageView.setImageResource(mThumbIds[position]);
-                        return imageView;
-                    case "introvertMode":
-                        imageView.setImageResource(mIntrovertImageGridView[position]);
-                        return imageView;
-                    case "deathByCuteness":
-                        imageView.setImageResource(mCutenessImageGridView[position]);
-                        return imageView;
-                }
             }
-            return imageView;
+            switch (InputSelection) {
+
+                case "killingTime":
+                    imageView.setImageResource(mThumbIds[position]);
+                    return imageView;
+                case "introvertMode":
+                    imageView.setImageResource(mIntrovertImageGridView[position]);
+                    return imageView;
+                case "deathByCuteness":
+                    imageView.setImageResource(mCutenessImageGridView[position]);
+                    return imageView;
+            }
         }
 
 //        public void getInputSelection (int position, String inputSelection){

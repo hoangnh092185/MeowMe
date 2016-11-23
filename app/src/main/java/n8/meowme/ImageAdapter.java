@@ -10,7 +10,7 @@ import android.widget.ImageView;
 /**
  * Created by Guest on 11/22/16.
  */
-public static class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 
     public ImageAdapter(Context c) {
@@ -30,7 +30,7 @@ public static class ImageAdapter extends BaseAdapter {
     }
 
     // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent, String inputSelection) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
 
         if (convertView == null) {
@@ -41,18 +41,19 @@ public static class ImageAdapter extends BaseAdapter {
             imageView.setPadding(1,1, 1,1);
         } else {
             imageView = (ImageView) convertView;
-            switch (inputSelection) {
-                case "killingTime":
-                    imageView.setImageResource(mThumbIds[position]);
-                    return imageView;
-                case "introvertMode":
-                    imageView.setImageResource(mIntrovertImageGridView[position]);
-                    return imageView;
-                case "deathByCuteness":
-                    imageView.setImageResource(mCutenessImageGridView[position]);
-                    return imageView;
-            }
+//            switch (inputSelection) {
+//                case "killingTime":
+//                    imageView.setImageResource(mThumbIds[position]);
+//                    return imageView;
+//                case "introvertMode":
+//                    imageView.setImageResource(mIntrovertImageGridView[position]);
+//                    return imageView;
+//                case "deathByCuteness":
+//                    imageView.setImageResource(mCutenessImageGridView[position]);
+//                    return imageView;
+//            }
         }
+        imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
 
