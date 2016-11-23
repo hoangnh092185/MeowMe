@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 * `git clone <https://github.com/hoangnh092185/MeowMe> this repository`
 * `open file with Android Studio`
 
-App should be ready to run using the android amulator.
+App should be ready to run using the android emulator.
 
 
 ## license ##
