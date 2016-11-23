@@ -38,7 +38,7 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         String inputName = intent.getStringExtra("inputName");
         userInputName = inputName;
         if(userInputName == null){
-            mUserInputTextView.setText("Welcome!!. Choose and I'll meow you there!");
+            mUserInputTextView.setText("Welcome!! Choose and I'll meow you there!");
         }else {
             mUserInputTextView.setText("Welcome "+ userInputName + ". Choose and I'll meow you there!");
         }

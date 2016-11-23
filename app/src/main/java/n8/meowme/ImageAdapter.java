@@ -24,7 +24,13 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        if(mInputSelection.equals("killingTime")){
+            return mThumbIds.length;
+        }else if (mInputSelection.equals("introvertMode")) {
+            return mIntrovertImageGridView.length;
+        }else {
+            return mCutenessImageGridView.length;
+        }
     }
 
     public Object getItem(int position) {
@@ -48,11 +54,11 @@ public class ImageAdapter extends BaseAdapter {
 
             switch (mInputSelection){
                 case "killingTime":
-                    Log.v("imageViewGetVIew", "KillingTime was selected");
+                    Log.v("imageViewGetVIew", mInputSelection);
                     imageView.setImageResource(mThumbIds[position]);
                     break;
                 case "introvertMode":
-                    Log.v("imageViewGetVIew", "introvertMode was selected");
+                    Log.v("imageViewGetVIew",  mInputSelection);
                     imageView.setImageResource(mIntrovertImageGridView[position]);
                     break;
                 case "deathByCuteness":
@@ -71,9 +77,9 @@ public class ImageAdapter extends BaseAdapter {
     private Integer[] mThumbIds = {
             R.drawable.option1image01, R.drawable.option1image02,
             R.drawable.option1image03, R.drawable.option1image04,
-            R.drawable.option1image05, R.drawable.option1image06,
-            R.drawable.option1image07, R.drawable.option1image08,
-            R.drawable.option1image09, R.drawable.option1image10,
+//            R.drawable.option1image05, R.drawable.option1image06,
+//            R.drawable.option1image07, R.drawable.option1image08,
+//            R.drawable.option1image09, R.drawable.option1image10,
     };
     private Integer[] mIntrovertImageGridView = {
             R.drawable.option2image01, R.drawable.option2image02,
