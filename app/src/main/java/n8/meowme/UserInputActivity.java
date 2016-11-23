@@ -50,19 +50,19 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
             switch (selectId){
                 case R.id.KillingTimeRadioButton:
                     String killingTime = "killingTime";
-                    intent = new Intent(UserInputActivity.this, Option1Activity.class);
+                    intent = new Intent(UserInputActivity.this, ImageGridViewActivity.class);
                     intent.putExtra("inputSelection", killingTime);
                     startActivity(intent);
                     break;
                 case R.id.IntrovertModeRadioButton:
                     String introvertMode = "introvertMode";
-                    intent = new Intent(UserInputActivity.this, Option1Activity.class);
+                    intent = new Intent(UserInputActivity.this, ImageGridViewActivity.class);
                     intent.putExtra("inputSelection", introvertMode);
                     startActivity(intent);
                     break;
                 case R.id.DeathByCutenessRadioButton:
                     String deathByCuteness = "deathByCuteness";
-                    intent = new Intent(UserInputActivity.this, Option1Activity.class);
+                    intent = new Intent(UserInputActivity.this, ImageGridViewActivity.class);
                     intent.putExtra("inputSelection", deathByCuteness);
                     startActivity(intent);
                     break;

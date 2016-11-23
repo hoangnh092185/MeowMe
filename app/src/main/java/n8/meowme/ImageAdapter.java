@@ -1,6 +1,7 @@
 package n8.meowme;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,9 +12,14 @@ import android.widget.ImageView;
  * Created by Guest on 11/22/16.
  */
 public class ImageAdapter extends BaseAdapter {
-    private Context mContext;
 
-    public ImageAdapter(Context c) {
+    private Context mContext;
+    private String mInputSelection;
+//    private Integer[] mThumbIds;
+
+    public ImageAdapter(Context c, String inputSelection) {
+        Log.v("imageAdapter", inputSelection);
+        mInputSelection = inputSelection;
         mContext = c;
     }
 
@@ -39,39 +45,29 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setLayoutParams(new GridView.LayoutParams(800, 400));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(1,1, 1,1);
+
+            switch (mInputSelection){
+                case "killingTime":
+                    Log.v("imageViewGetVIew", "KillingTime was selected");
+                    imageView.setImageResource(mThumbIds[position]);
+                    break;
+                case "introvertMode":
+                    Log.v("imageViewGetVIew", "introvertMode was selected");
+                    imageView.setImageResource(mIntrovertImageGridView[position]);
+                    break;
+                case "deathByCuteness":
+                    Log.v("imageViewGetVIew", "deathByCuteness was sellected");
+                    imageView.setImageResource(mCutenessImageGridView[position]);
+                    break;
+            }
+
         } else {
             imageView = (ImageView) convertView;
-//            switch (inputSelection) {
-//                case "killingTime":
-//                    imageView.setImageResource(mThumbIds[position]);
-//                    return imageView;
-//                case "introvertMode":
-//                    imageView.setImageResource(mIntrovertImageGridView[position]);
-//                    return imageView;
-//                case "deathByCuteness":
-//                    imageView.setImageResource(mCutenessImageGridView[position]);
-//                    return imageView;
-//            }
         }
-        imageView.setImageResource(mThumbIds[position]);
+
         return imageView;
     }
 
-//        public void getInputSelection (int position, String inputSelection){
-//            ImageView imageView;
-//            if(inputSelection == "killingTime"){
-//                imageView.setImageResource(mThumbIds[position]);
-//                return imageView;
-//            } else if (inputSelection == "introvertMode"){
-//                imageView.setImageResource(mIntrovertImageGridView[position]);
-//                return imageView;
-//            }else {
-//                imageView.setImageResource(mCutenessImageGridView[position]);
-//                return imageView;
-//            }
-//        }
-
-    // references to our images
     private Integer[] mThumbIds = {
             R.drawable.option1image01, R.drawable.option1image02,
             R.drawable.option1image03, R.drawable.option1image04,
@@ -93,5 +89,6 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.option3image07, R.drawable.option3image08,
             R.drawable.option3image09, R.drawable.option3image10,
     };
+
 
 }

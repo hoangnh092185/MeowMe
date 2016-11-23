@@ -20,23 +20,24 @@
         <activity android:name=".UserInputActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="n8.meowme.MainActivity"></meta-data>
+                android:value="n8.meowme.MainActivity" />
         </activity>
-        <activity android:name=".Option1Activity">
+        <activity android:name=".OptionActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="n8.meowme.UserInputActivity"></meta-data>
+                android:value="n8.meowme.UserInputActivity" />
         </activity>
         <activity android:name=".Option2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="n8.meowme.UserInputActivity"></meta-data>
+                android:value="n8.meowme.UserInputActivity" />
         </activity>
         <activity android:name=".Option3Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="n8.meowme.UserInputActivity"></meta-data>
+                android:value="n8.meowme.UserInputActivity" />
         </activity>
+        <activity android:name=".ImageGridViewActivity"></activity>
     </application>
 
 </manifest>
