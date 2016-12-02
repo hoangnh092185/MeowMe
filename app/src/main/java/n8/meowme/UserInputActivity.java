@@ -53,9 +53,9 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
             int selectId = mRadioGroup.getCheckedRadioButtonId();
             switch (selectId){
                 case R.id.KillingTimeRadioButton:
-                    String killingTime = "killingTime";
-                    intent = new Intent(UserInputActivity.this, ImageGridViewActivity.class);
-                    intent.putExtra("inputSelection", killingTime);
+                    String locationZip = "97217";
+                    intent = new Intent(UserInputActivity.this, PetfinderActivity.class);
+                    intent.putExtra("locationZip", locationZip);
                     startActivity(intent);
                     break;
                 case R.id.IntrovertModeRadioButton:

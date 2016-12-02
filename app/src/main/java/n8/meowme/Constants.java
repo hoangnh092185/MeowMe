@@ -13,5 +13,6 @@ public class Constants {
     public static final String PETFINDER_OUTPUT_PARAMETER = "output";
     public static final String PETFINDER_COUNT_PARAMETER = "count";
     public static final String PETFINDER_FORMAT_PARAMETER = "format";
+    public static final String PETFINDER_KEY_PARAMETER = "key";
 
 }
