@@ -14,6 +14,8 @@ You will need the following things properly installed on your computer.
 
 * `git clone <https://github.com/hoangnh092185/MeowMe> this repository`
 * `open file with Android Studio`
+* Get user PetFinder api key her: <https://www.petfinder.com/developers/api-docs>
+* Open Gradle Scripts > gradle.properties(Project Properties) > Paste your user key `PetFinderKey = "Your_User_Key_Here"`
 
 App should be ready to run using the android emulator.
 
