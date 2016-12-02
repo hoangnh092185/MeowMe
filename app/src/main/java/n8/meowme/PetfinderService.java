@@ -44,12 +44,11 @@ public class PetfinderService {
         call.enqueue(callback);
     }
 
-    public ArrayList<Petfinder> processResults(Response response){
+    public ArrayList<Petfinder> processResults(Response response) {
         ArrayList<Petfinder> petfinders = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
-            Log.v(TAG, "get response: "+jsonData);
             if(response.isSuccessful()){
                 JSONObject petfinderJSON = new JSONObject(jsonData);
                 JSONArray petsJSON = petfinderJSON.getJSONArray("petfinder");
