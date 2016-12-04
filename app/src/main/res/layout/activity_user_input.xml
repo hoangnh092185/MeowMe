@@ -28,58 +28,6 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/userInputTextView"
-        android:id="@+id/userInputGroup"
-        android:orientation="vertical">
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Just Killing Time"
-            android:id="@+id/KillingTimeRadioButton"
-            android:layout_below="@+id/userInputGroup"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:checked="false"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Introvert Mode"
-            android:id="@+id/IntrovertModeRadioButton"
-            android:layout_below="@+id/KillingTimeRadioButton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:checked="false"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Death By Cuteness"
-            android:id="@+id/DeathByCutenessRadioButton"
-            android:layout_below="@+id/IntrovertModeRadioButton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:checked="false"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </RadioGroup>
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,6 +36,7 @@
         android:layout_centerHorizontal="true"
         android:hint="Enter Zip Code"
         android:textAlignment="center"
+        android:singleLine="true"
         android:textSize="30dp"
         android:textStyle="bold"
         android:background="@color/colorPrimaryText"
@@ -96,12 +45,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Meow Me"
+        android:text="Show Me"
         android:textColor="@color/colorPrimaryText"
         android:id="@+id/userInputButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

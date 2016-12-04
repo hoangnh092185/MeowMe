@@ -34,7 +34,7 @@ public class PetfinderService {
         urlBuilder.addQueryParameter(Constants.PETFINDER_KEY_PARAMETER, Constants.PETFINDER_KEY);
         urlBuilder.addQueryParameter(Constants.PETFINDER_LOCATION_PARAMETER, location);
         urlBuilder.addQueryParameter(Constants.PETFINDER_ANIMAL_PARAMETER, "cat");
-        urlBuilder.addQueryParameter(Constants.PETFINDER_COUNT_PARAMETER, "2");
+        urlBuilder.addQueryParameter(Constants.PETFINDER_COUNT_PARAMETER, "10");
         urlBuilder.addQueryParameter(Constants.PETFINDER_FORMAT_PARAMETER, "json");
 
         String url = urlBuilder.build().toString();

@@ -37,7 +37,7 @@ public class PetfinderActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String location = "97217";
+        String location = intent.getStringExtra("location");
         getPets(location);
     }
 
