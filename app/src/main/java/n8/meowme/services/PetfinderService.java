@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import n8.meowme.Constants;
 import n8.meowme.models.Petfinder;
@@ -57,10 +58,18 @@ public class PetfinderService {
                 JSONArray petArrayJSON = petJSON.getJSONArray("pet");
                 for (int i=0; i<petArrayJSON.length(); i++){
                     JSONObject petInfoJSON = petArrayJSON.getJSONObject(i);
-                    String Name = petInfoJSON.getJSONObject("name").getString("$t");
+                    String name = petInfoJSON.getJSONObject("name").getString("$t");
+                    String age =  petInfoJSON.getJSONObject("age").getString("$t");
+                    String imageURL =  petInfoJSON.getJSONObject("media").getJSONObject("photos").getJSONArray("photo").getJSONObject(2).getString("$t");
+                    String lastUpdate =  petInfoJSON.getJSONObject("lastUpdate").getString("$t");
+//                    ArrayList<String> breed = new ArrayList<>();
+//                    JSONArray breedJSON = petInfoJSON.getJSONObject("breeds").getJSONArray("breed");
+//                    for (int j=0; j<breedJSON.length(); j++){
+//                        breed.add(breedJSON.getJSONObject(j).getString("$t"));
+//                    }
 
-
-                    Log.d(TAG, Name);
+                    Petfinder petfinder = new Petfinder(name, age, imageURL, lastUpdate);
+                    petfinders.add(petfinder);
                 }
 
             }

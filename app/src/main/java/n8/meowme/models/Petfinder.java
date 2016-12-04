@@ -7,16 +7,16 @@ public class Petfinder {
     private String mName;
     private String mLastUpdate;
     private String mAge;
-    private String mBreed;
-    private String mPhotoUrl;
+//    private String mBreed;
+    private String mImageUrl;
 
 
-    public Petfinder (String name, String lastUpdate, String age, String breed, String photoUrl){
+    public Petfinder (String name, String lastUpdate, String age, String imageUrl){
         this.mName = name;
         this.mLastUpdate = lastUpdate;
         this.mAge = age;
-        this.mBreed = breed;
-        this.mPhotoUrl = photoUrl;
+//        this.mBreed = breed;
+        this.mImageUrl = imageUrl;
     }
 
     public String getName(){
@@ -28,10 +28,10 @@ public class Petfinder {
     public String getAge(){
         return mAge;
     }
-    public String getBreed(){
-        return mBreed;
-    }
-    public String getPhotoUrl(){
-        return mPhotoUrl;
+//    public String getBreed(){
+//        return mBreed;
+//    }
+    public String getImageUrl(){
+        return mImageUrl;
     }
 }
