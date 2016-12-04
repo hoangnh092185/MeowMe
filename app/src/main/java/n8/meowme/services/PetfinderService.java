@@ -34,7 +34,7 @@ public class PetfinderService {
         urlBuilder.addQueryParameter(Constants.PETFINDER_KEY_PARAMETER, Constants.PETFINDER_KEY);
         urlBuilder.addQueryParameter(Constants.PETFINDER_LOCATION_PARAMETER, location);
         urlBuilder.addQueryParameter(Constants.PETFINDER_ANIMAL_PARAMETER, "cat");
-        urlBuilder.addQueryParameter(Constants.PETFINDER_COUNT_PARAMETER, "10");
+        urlBuilder.addQueryParameter(Constants.PETFINDER_COUNT_PARAMETER, "20");
         urlBuilder.addQueryParameter(Constants.PETFINDER_FORMAT_PARAMETER, "json");
 
         String url = urlBuilder.build().toString();
@@ -67,7 +67,6 @@ public class PetfinderService {
 //                    for (int j=0; j<breedJSON.length(); j++){
 //                        breed.add(breedJSON.getJSONObject(j).getString("$t"));
 //                    }
-                    Log.d(TAG, imageURL);
                     Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL);
                     petfinders.add(petfinder);
                 }
