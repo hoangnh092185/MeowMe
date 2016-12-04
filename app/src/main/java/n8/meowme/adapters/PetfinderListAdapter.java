@@ -19,6 +19,7 @@ import n8.meowme.models.Petfinder;
  * Created by Guest on 12/4/16.
  */
 public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdapter.PetfinderViewHolder> {
+
     private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private Context mContext;
 
@@ -28,18 +29,19 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
     }
 
     @Override
-    public PetfinderListAdapter.PetfinderViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public PetfinderListAdapter.PetfinderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.petfinder_list_item, parent, false);
         PetfinderViewHolder viewHolder = new PetfinderViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBinViewHolder(PetfinderListAdapter.PetfinderViewHolder holder, int position){
+    public void onBindViewHolder(PetfinderListAdapter.PetfinderViewHolder holder, int position) {
         holder.bindPetfinder(mPetfinders.get(position));
     }
+
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return mPetfinders.size();
     }
 
