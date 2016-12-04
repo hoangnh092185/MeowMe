@@ -1,4 +1,4 @@
-package n8.meowme;
+package n8.meowme.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import n8.meowme.R;
+import n8.meowme.adapters.ImageAdapter;
 
 public class ImageGridViewActivity extends AppCompatActivity {
     @Bind(R.id.imageGridView) GridView mImageGridView;

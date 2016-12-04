@@ -1,10 +1,10 @@
-package n8.meowme;
+package n8.meowme.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.annotation.BinderThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import n8.meowme.R;
 
 public class UserInputActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TAG = UserInputActivity.class.getSimpleName();
     @Bind(R.id.userInputGroup) RadioGroup mRadioGroup;
     @Bind(R.id.userInputButton) Button mUserInputButton;
     @Bind(R.id.userInputTextView) TextView mUserInputTextView;
@@ -53,6 +55,7 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
             int selectId = mRadioGroup.getCheckedRadioButtonId();
             switch (selectId){
                 case R.id.KillingTimeRadioButton:
+
                     String locationZip = "97217";
                     intent = new Intent(UserInputActivity.this, PetfinderActivity.class);
                     intent.putExtra("locationZip", locationZip);

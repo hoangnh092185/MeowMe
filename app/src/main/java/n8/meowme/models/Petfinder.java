@@ -1,4 +1,4 @@
-package n8.meowme;
+package n8.meowme.models;
 
 /**
  * Created by Guest on 12/2/16.

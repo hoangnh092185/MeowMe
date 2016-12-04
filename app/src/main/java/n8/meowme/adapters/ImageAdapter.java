@@ -1,4 +1,4 @@
-package n8.meowme;
+package n8.meowme.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import n8.meowme.R;
 
 /**
  * Created by Guest on 11/22/16.

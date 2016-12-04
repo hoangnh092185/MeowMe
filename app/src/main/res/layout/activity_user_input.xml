@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="n8.meowme.UserInputActivity">
+    tools:context=".ui.UserInputActivity">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -80,6 +80,19 @@
             android:textStyle="bold" />
     </RadioGroup>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/zipCodeEditText"
+        android:layout_above="@+id/userInputButton"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter Zip Code"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryText"
+        android:paddingBottom="10sp"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,6 +103,5 @@
         android:layout_centerHorizontal="true"
         android:textSize="40sp"
         android:textStyle="bold" />
-
 
 </RelativeLayout>

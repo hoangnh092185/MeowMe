@@ -1,4 +1,4 @@
-package n8.meowme;
+package n8.meowme.services;
 
 import android.util.Log;
 
@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import n8.meowme.Constants;
+import n8.meowme.models.Petfinder;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -35,7 +37,6 @@ public class PetfinderService {
         urlBuilder.addQueryParameter(Constants.PETFINDER_FORMAT_PARAMETER, "json");
 
         String url = urlBuilder.build().toString();
-
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -48,14 +49,20 @@ public class PetfinderService {
         ArrayList<Petfinder> petfinders = new ArrayList<>();
 
         try {
-            String jsonData = response.body().string();
             if(response.isSuccessful()){
+                String jsonData = response.body().string();
                 JSONObject petfinderJSON = new JSONObject(jsonData);
-                JSONArray petsJSON = petfinderJSON.getJSONArray("petfinder");
-//                JSONArray petArray = petfinderJSON.getJSONObject("petfinder").getJSONObject("pets").getJSONArray("pet");
+                JSONObject petsJSON = petfinderJSON.getJSONObject("petfinder");
+                JSONObject petJSON = petsJSON.getJSONObject("pets");
+                JSONArray petArrayJSON = petJSON.getJSONArray("pet");
+                for (int i=0; i<petArrayJSON.length(); i++){
+                    JSONObject petInfoJSON = petArrayJSON.getJSONObject(i);
+                    String Name = petInfoJSON.getJSONObject("name").getString("$t");
 
-//                Petfinder petfinder = new Petfinder(name , lastUpdate, age, breed, photoUrl);
-//                petfinders.add(petfinder);
+
+                    Log.d(TAG, Name);
+                }
+
             }
         } catch (IOException e) {
             e.printStackTrace();

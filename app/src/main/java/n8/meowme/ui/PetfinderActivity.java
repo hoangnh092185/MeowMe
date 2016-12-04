@@ -1,4 +1,4 @@
-package n8.meowme;
+package n8.meowme.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,10 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
+import n8.meowme.R;
+import n8.meowme.models.Petfinder;
+import n8.meowme.services.PetfinderService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -29,7 +31,7 @@ public class PetfinderActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String location = intent.getStringExtra("locationZip");
+        String location = "97217";
         getPets(location);
     }
 
@@ -44,14 +46,12 @@ public class PetfinderActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-               try {
-                   String jsonData = response.body().string();
+
+
                    if (response.isSuccessful()){
                        mPetfinders = petfinderService.processResults(response);
                    }
-               } catch (IOException e){
-                   e.printStackTrace();
-               }
+
             }
         });
     }
