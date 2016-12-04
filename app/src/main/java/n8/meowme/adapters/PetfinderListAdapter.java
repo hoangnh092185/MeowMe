@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -19,7 +21,6 @@ import n8.meowme.models.Petfinder;
  * Created by Guest on 12/4/16.
  */
 public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdapter.PetfinderViewHolder> {
-
     private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private Context mContext;
 
@@ -60,8 +61,10 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
 
         public void bindPetfinder(Petfinder petfinder){
             mPetfinderNameTextView.setText(petfinder.getName());
-            mLastUpdateTextView.setText(petfinder.getLastUpdate());
+            mLastUpdateTextView.setText("Last listed: "+petfinder.getLastUpdate());
             mAgeTextView.setText("Age: " + petfinder.getAge());
+            Picasso.with(mContext).load(petfinder.getImageUrl()).into(mPetfinderImageView);
+
         }
 
 

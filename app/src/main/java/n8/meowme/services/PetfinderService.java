@@ -67,11 +67,10 @@ public class PetfinderService {
 //                    for (int j=0; j<breedJSON.length(); j++){
 //                        breed.add(breedJSON.getJSONObject(j).getString("$t"));
 //                    }
-
-                    Petfinder petfinder = new Petfinder(name, age, imageURL, lastUpdate);
+                    Log.d(TAG, imageURL);
+                    Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL);
                     petfinders.add(petfinder);
                 }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
