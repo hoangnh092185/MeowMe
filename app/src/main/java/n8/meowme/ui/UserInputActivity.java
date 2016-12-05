@@ -46,20 +46,16 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         }else {
             mUserInputTextView.setText("Welcome "+ userInputName + ". Enter your area code and I show you cute Cat!!");
         }
-
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent;
-
         if(v == mUserInputButton){
             String location = mZipCodeEditText.getText().toString();
-            intent = new Intent(UserInputActivity.this, PetfinderActivity.class);
+            Intent intent = new Intent(UserInputActivity.this, PetfinderActivity.class);
             intent.putExtra("location", location);
             startActivity(intent);
         }
-
 
     }
 }

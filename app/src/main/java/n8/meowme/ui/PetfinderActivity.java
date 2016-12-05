@@ -38,6 +38,7 @@ public class PetfinderActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
+
         getPets(location);
     }
 
@@ -63,6 +64,7 @@ public class PetfinderActivity extends AppCompatActivity {
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PetfinderActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
+
                     }
                 });
             }

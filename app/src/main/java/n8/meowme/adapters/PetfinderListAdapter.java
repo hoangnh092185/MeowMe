@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +28,9 @@ import n8.meowme.ui.PetfinderDetailActivity;
  * Created by Guest on 12/4/16.
  */
 public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdapter.PetfinderViewHolder> {
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
     private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private Context mContext;
 
@@ -51,7 +56,7 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
         return mPetfinders.size();
     }
 
-    public class PetfinderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class PetfinderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
         @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
         @Bind(R.id.lastUpdateTextView) TextView mLastUpdateTextView;
@@ -65,6 +70,17 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
         }
+        public void bindPetfinder(Petfinder petfinder){
+            Picasso.with(mContext)
+                    .load(petfinder.getImageUrl())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mPetfinderImageView);
+
+            mPetfinderNameTextView.setText(petfinder.getName());
+            mLastUpdateTextView.setText("Last listed: "+petfinder.getLastUpdate());
+            mAgeTextView.setText("Age: " + petfinder.getAge());
+        }
 
         @Override
         public void onClick(View v){
@@ -74,15 +90,5 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
             intent.putExtra("petfinders", Parcels.wrap(mPetfinders));
             mContext.startActivity(intent);
         }
-
-        public void bindPetfinder(Petfinder petfinder){
-            mPetfinderNameTextView.setText(petfinder.getName());
-            mLastUpdateTextView.setText("Last listed: "+petfinder.getLastUpdate());
-            mAgeTextView.setText("Age: " + petfinder.getAge());
-            Picasso.with(mContext).load(petfinder.getImageUrl()).into(mPetfinderImageView);
-
-        }
-
-
     }
 }

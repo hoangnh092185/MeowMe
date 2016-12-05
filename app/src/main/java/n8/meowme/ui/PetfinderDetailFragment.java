@@ -22,7 +22,7 @@ import n8.meowme.models.Petfinder;
  * A simple {@link Fragment} subclass.
  */
 public class PetfinderDetailFragment extends Fragment {
-    @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
+    @Bind(R.id.petinderFragmentImageView) ImageView mPetfinderFragmentImageView;
     @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
     @Bind(R.id.ageTextView) TextView mAgeTextView;
     @Bind(R.id.lastUpdateTextView) TextView mLastUpdateTextView;
@@ -51,13 +51,13 @@ public class PetfinderDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_petfinder_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mPetfinder.getImageUrl()).into(mPetfinderImageView);
+        Picasso.with(view.getContext()).load(mPetfinder.getImageUrl()).into(mPetfinderFragmentImageView);
 
         mPetfinderNameTextView.setText(mPetfinder.getName());
         mAgeTextView.setText(mPetfinder.getAge());
         mLastUpdateTextView.setText(mPetfinder.getLastUpdate());
-        mWebsiteTextView.setText("https://www.petfinder.com/");
-        mPhoneTextView.setText("(503) 285-7722");
+        mWebsiteTextView.setText(mPetfinder.getWebsite());
+        mPhoneTextView.setText(mPetfinder.getPhoneNumber());
         mAddressTextView.setText("1067 NE Columbia Blvd, Portland, OR 97211");
 
         return view;

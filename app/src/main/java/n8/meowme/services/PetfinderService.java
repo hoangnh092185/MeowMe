@@ -34,7 +34,7 @@ public class PetfinderService {
         urlBuilder.addQueryParameter(Constants.PETFINDER_KEY_PARAMETER, Constants.PETFINDER_KEY);
         urlBuilder.addQueryParameter(Constants.PETFINDER_LOCATION_PARAMETER, location);
         urlBuilder.addQueryParameter(Constants.PETFINDER_ANIMAL_PARAMETER, "cat");
-        urlBuilder.addQueryParameter(Constants.PETFINDER_COUNT_PARAMETER, "20");
+        urlBuilder.addQueryParameter(Constants.PETFINDER_COUNT_PARAMETER, "2");
         urlBuilder.addQueryParameter(Constants.PETFINDER_FORMAT_PARAMETER, "json");
 
         String url = urlBuilder.build().toString();
@@ -62,12 +62,14 @@ public class PetfinderService {
                     String age =  petInfoJSON.getJSONObject("age").getString("$t");
                     String imageURL =  petInfoJSON.getJSONObject("media").getJSONObject("photos").getJSONArray("photo").getJSONObject(2).getString("$t");
                     String lastUpdate =  petInfoJSON.getJSONObject("lastUpdate").getString("$t");
+                    String website = petInfoJSON.getJSONObject("contact").getJSONObject("email").getString("$t");
+                    String phoneNumber = petInfoJSON.getJSONObject("contact").getJSONObject("phone").getString("$t");
 //                    ArrayList<String> breed = new ArrayList<>();
 //                    JSONArray breedJSON = petInfoJSON.getJSONObject("breeds").getJSONArray("breed");
 //                    for (int j=0; j<breedJSON.length(); j++){
 //                        breed.add(breedJSON.getJSONObject(j).getString("$t"));
 //                    }
-                    Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL);
+                    Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL, website, phoneNumber);
                     petfinders.add(petfinder);
                 }
             }
