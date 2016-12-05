@@ -7,7 +7,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import n8.meowme.Constants;
@@ -61,7 +64,7 @@ public class PetfinderService {
                     String name = petInfoJSON.getJSONObject("name").getString("$t");
                     String age =  petInfoJSON.getJSONObject("age").getString("$t");
                     String imageURL =  petInfoJSON.getJSONObject("media").getJSONObject("photos").getJSONArray("photo").getJSONObject(2).getString("$t");
-                    String lastUpdate =  petInfoJSON.getJSONObject("lastUpdate").getString("$t");
+                    String dateFormat =  petInfoJSON.getJSONObject("lastUpdate").getString("$t");
                     String website = petInfoJSON.getJSONObject("contact").getJSONObject("email").getString("$t");
                     String phoneNumber = petInfoJSON.getJSONObject("contact").getJSONObject("phone").getString("$t");
 //                    ArrayList<String> breed = new ArrayList<>();
@@ -69,6 +72,13 @@ public class PetfinderService {
 //                    for (int j=0; j<breedJSON.length(); j++){
 //                        breed.add(breedJSON.getJSONObject(j).getString("$t"));
 //                    }
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+//                    SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+//                    Date d = sdf.parse(dateFormat);
+                    String lastUpdate = sdf.parse(dateFormat).toString();
+
+                    Log.d("time", lastUpdate.toString());
                     Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL, website, phoneNumber);
                     petfinders.add(petfinder);
                 }
@@ -76,6 +86,8 @@ public class PetfinderService {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return petfinders;

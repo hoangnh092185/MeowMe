@@ -3,6 +3,7 @@ package n8.meowme.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,8 @@ public class PetfinderDetailFragment extends Fragment {
         Picasso.with(view.getContext()).load(mPetfinder.getImageUrl()).into(mPetfinderFragmentImageView);
 
         mPetfinderNameTextView.setText(mPetfinder.getName());
-        mAgeTextView.setText(mPetfinder.getAge());
-        mLastUpdateTextView.setText(mPetfinder.getLastUpdate());
+        mAgeTextView.setText("Age: " + mPetfinder.getAge());
+        mLastUpdateTextView.setText("Last Updated: " + mPetfinder.getLastUpdate());
         mWebsiteTextView.setText(mPetfinder.getWebsite());
         mPhoneTextView.setText(mPetfinder.getPhoneNumber());
         mAddressTextView.setText("1067 NE Columbia Blvd, Portland, OR 97211");

@@ -16,7 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -78,7 +80,7 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
                     .into(mPetfinderImageView);
 
             mPetfinderNameTextView.setText(petfinder.getName());
-            mLastUpdateTextView.setText("Last listed: "+petfinder.getLastUpdate());
+            mLastUpdateTextView.setText("Last listed: "+ petfinder.getLastUpdate());
             mAgeTextView.setText("Age: " + petfinder.getAge());
         }
 
