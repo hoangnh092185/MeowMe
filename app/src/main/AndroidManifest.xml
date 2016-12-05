@@ -24,12 +24,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.ImageGridViewActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.UserInputActivity" />
-        </activity>
-        <activity android:name=".ui.PetfinderActivity"></activity>
+        <activity android:name=".ui.PetfinderActivity" />
+        <activity android:name=".ui.PetfinderDetailActivity"></activity>
     </application>
 
 </manifest>
