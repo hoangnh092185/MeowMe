@@ -5,6 +5,7 @@ package n8.meowme;
  */
 public class Constants {
     public static final String PETFINDER_KEY = BuildConfig.PETFINDER_KEY;
+    public static final String PETFINDER_PET_DETAIL_URL = "https://www.petfinder.com/petdetail/";
     public static final String PETFINDER_PET_FIND_URL = "http://api.petfinder.com/pet.find?";
     public static final String PETFINDER_PET_GET_URL = "http://api.petfinder.com/pet.get?";
     public static final String PETFINDER_PET_GETRANDOM_URL = "http://api.petfinder.com/pet.getRandom?";
