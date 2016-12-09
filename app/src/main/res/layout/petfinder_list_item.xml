@@ -6,8 +6,8 @@
     android:paddingBottom="10dp">
 
     <ImageView
-        android:layout_width="130dp"
-        android:layout_height="100dp"
+        android:layout_width="189dp"
+        android:layout_height="145dp"
         android:id="@+id/petfinderImageView"
         android:src="@drawable/background"
         android:scaleType="centerCrop"/>

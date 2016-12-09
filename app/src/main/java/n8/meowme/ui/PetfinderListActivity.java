@@ -22,9 +22,6 @@ import okhttp3.Response;
 public class PetfinderListActivity extends AppCompatActivity {
     public static final String TAG = PetfinderListActivity.class.getSimpleName();
 
-//    private SharedPreferences mSharedPreferences;
-//    private String mRecentAddress;
-
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private PetfinderListAdapter mAdapter;
@@ -39,16 +36,6 @@ public class PetfinderListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
         getPets(location);
-//
-
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-//        if (mRecentAddress != null) {
-//            getPets(mRecentAddress);
-//        }
-//        else {
-//            getPets(location);
-//        }
 
     }
 
@@ -80,4 +67,5 @@ public class PetfinderListActivity extends AppCompatActivity {
             }
         });
     }
+
 }

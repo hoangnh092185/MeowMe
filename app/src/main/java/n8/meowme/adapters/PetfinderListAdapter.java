@@ -2,23 +2,18 @@ package n8.meowme.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,8 +25,8 @@ import n8.meowme.ui.PetfinderDetailActivity;
  * Created by Guest on 12/4/16.
  */
 public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdapter.PetfinderViewHolder> {
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
 
     private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private Context mContext;
@@ -93,4 +88,5 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
             mContext.startActivity(intent);
         }
     }
+
 }

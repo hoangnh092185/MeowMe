@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -36,6 +39,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
     @Bind(R.id.phoneTextView) TextView mPhoneTextView;
     @Bind(R.id.addressTextView) TextView mAddressTextView;
+    @Bind(R.id.saveTextView) TextView mSaveTextView;
 
     private Petfinder mPetfinder;
 
@@ -75,6 +79,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         mWebsiteTextView.setOnClickListener(this);
         mPhoneTextView.setOnClickListener(this);
         mAddressTextView.setOnClickListener(this);
+        mSaveTextView.setOnClickListener(this);
 
         return view;
     }
@@ -94,6 +99,13 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("geo:0,0?q=" + mPetfinder.getAddress() + mPetfinder.getCity() + mPetfinder.getState() + mPetfinder.getZip() ));
             startActivity(mapIntent);
+        }
+        if (v == mSaveTextView){
+            DatabaseReference petfinderRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS);
+            petfinderRef.push().setValue(mPetfinder);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }

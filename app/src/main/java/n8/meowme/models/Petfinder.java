@@ -27,18 +27,6 @@ public class Petfinder {
 
     public Petfinder(){}
 
-//    public Petfinder (String name, String lastUpdate, String age, String imageUrl, String website, String phoneNumber){
-//        this.name = name;
-//        this.lastUpdate = lastUpdate;
-//        this.age = age;
-////        this.breed = breed;
-//        this.imageUrl = imageUrl;
-//        this.website = website;
-//        this.phoneNumber = phoneNumber;
-////        imageUrl = getLargeImageUrl(imageUrl);
-//    }
-
-
     public Petfinder(String name, String lastUpdate, String age, String imageUrl, String website, String phoneNumber,String state, String city, String zip, String address, String petId, String shelterPetId, String sex, String description) {
         this.name = name;
         this.lastUpdate = lastUpdate;
@@ -65,9 +53,6 @@ public class Petfinder {
     public String getAge(){
         return age;
     }
-//    public String getBreed(){
-//        return mBreed;
-//    }
     public String getImageUrl(){
         return imageUrl;
     }
@@ -103,9 +88,5 @@ public class Petfinder {
     public String getDescription() {
         return description;
     }
-//    public String getLargeImageUrl(String ImageUrl) {
-////        String largeImageUrl = imageUrl.substring(0, imageUrl.length() -6).concat("o.jpg");
-////        String largeImageUrl = imageUrl;
-//        return imageUrl;
-//    }
+
 }

@@ -28,21 +28,16 @@ import n8.meowme.models.Petfinder;
 public class UserInputActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = UserInputActivity.class.getSimpleName();
 
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-
     private DatabaseReference mSearchedLocationReference;
     private ValueEventListener mSearchedLocationReferenceListener;
-
-
-//    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private PetfinderListAdapter mAdapter;
     public ArrayList<Petfinder> mPetfinders = new ArrayList<>();
 
-    @Bind(R.id.userInputButton) Button mUserInputButton;
+    @Bind(R.id.findPetfindersButton) Button mUserInputButton;
     @Bind(R.id.userInputTextView) TextView mUserInputTextView;
     @Bind(R.id.zipCodeEditText) EditText mZipCodeEditText;
+    @Bind(R.id.savedListsButton) Button mSavedListsButton;
 
     private String userInputName = null;
 
@@ -74,6 +69,7 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         });
 
         mUserInputButton.setOnClickListener(this);
+        mSavedListsButton.setOnClickListener(this);
 
         Typeface userInputButtonView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
         mUserInputButton.setTypeface(userInputButtonView);
@@ -99,6 +95,10 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
 
             Intent intent = new Intent(UserInputActivity.this, PetfinderListActivity.class);
             intent.putExtra("location", location);
+            startActivity(intent);
+        }
+        if(v == mSavedListsButton){
+            Intent intent = new Intent(UserInputActivity.this, SavedPetfinderListActivity.class);
             startActivity(intent);
         }
 

@@ -27,13 +27,14 @@
         <activity android:name=".ui.PetfinderListActivity" />
         <activity android:name=".ui.PetfinderDetailActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
-
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.SavedPetfinderListActivity"></activity>
     </application>
 
 </manifest>
