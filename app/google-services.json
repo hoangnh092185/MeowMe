@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "389058162512",
+    "firebase_url": "https://meowme-9bfc1.firebaseio.com",
+    "project_id": "meowme-9bfc1",
+    "storage_bucket": "meowme-9bfc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389058162512:android:ee86c9ee5affd068",
+        "android_client_info": {
+          "package_name": "n8.meowme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389058162512-g9l6eg9m5aef15cfr24pbvs2h9qkhatq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhM_ukY0dVhUwTZ2lRrP8cSGrjr2uU4YM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,8 +24,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.PetfinderActivity" />
-        <activity android:name=".ui.PetfinderDetailActivity"></activity>
+        <activity android:name=".ui.PetfinderListActivity" />
+        <activity android:name=".ui.PetfinderDetailActivity" />
+        <activity android:name=".ui.CreateAccountActivity" />
+
+        <activity android:name=".ui.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

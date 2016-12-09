@@ -1,19 +1,19 @@
 package n8.meowme.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import n8.meowme.Constants;
 import n8.meowme.R;
 import n8.meowme.adapters.PetfinderListAdapter;
 import n8.meowme.models.Petfinder;
@@ -22,8 +22,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class PetfinderActivity extends AppCompatActivity {
-    public static final String TAG = PetfinderActivity.class.getSimpleName();
+public class PetfinderListActivity extends AppCompatActivity {
+    public static final String TAG = PetfinderListActivity.class.getSimpleName();
+
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private PetfinderListAdapter mAdapter;
@@ -39,7 +42,16 @@ public class PetfinderActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
 
-        getPets(location);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        if (mRecentAddress != null) {
+            getPets(mRecentAddress);
+        }
+//        else {
+//            getPets(location);
+//        }
+
     }
 
     private void getPets(String location){
@@ -55,13 +67,13 @@ public class PetfinderActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 mPetfinders = petfinderService.processResults(response);
 
-                PetfinderActivity.this.runOnUiThread(new Runnable() {
+                PetfinderListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter = new PetfinderListAdapter(getApplicationContext(), mPetfinders);
 
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PetfinderActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PetfinderListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
 
