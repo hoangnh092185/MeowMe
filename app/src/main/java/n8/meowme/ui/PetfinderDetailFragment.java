@@ -70,7 +70,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
 
         mPetfinderNameTextView.setText(mPetfinder.getName());
         mAgeTextView.setText("Age: " + mPetfinder.getAge());
-        mLastUpdateTextView.setText("Last Updated: " + mPetfinder.getLastUpdate());
+        mLastUpdateTextView.setText("Breed:" + android.text.TextUtils.join("/", mPetfinder.getBreed()));
         mWebsiteTextView.setText(mPetfinder.getWebsite());
         mPhoneTextView.setText(mPetfinder.getPhoneNumber());
         mAddressTextView.setText(mPetfinder.getAddress());
