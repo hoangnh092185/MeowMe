@@ -25,6 +25,7 @@ public class Petfinder {
     String shelterPetId;
     String sex;
     String description;
+    String pushId;
 
     List<String> breed = new ArrayList<>();
 
@@ -97,5 +98,13 @@ public class Petfinder {
 
     public List<String> getBreed() {
         return breed;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

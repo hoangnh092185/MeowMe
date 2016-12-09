@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -101,10 +103,16 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
             startActivity(mapIntent);
         }
         if (v == mSaveTextView){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference petfinderRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS);
-            petfinderRef.push().setValue(mPetfinder);
+                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
+                    .child(uid);
+            DatabaseReference pushRef = petfinderRef.push();
+            String pushId = pushRef.getKey();
+            mPetfinder.setPushId(pushId);
+//            petfinderRef.push().setValue(mPetfinder);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,7 +30,14 @@ public class SavedPetfinderListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_petfinder);
         ButterKnife.bind(this);
 
-        mPetfinderReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_PETFINDERS);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mPetfinderReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 
