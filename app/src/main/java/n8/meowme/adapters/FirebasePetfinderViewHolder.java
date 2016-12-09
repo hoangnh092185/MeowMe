@@ -43,7 +43,7 @@ public class FirebasePetfinderViewHolder extends RecyclerView.ViewHolder impleme
     public void bindPetfinder(Petfinder petfinder){
         ImageView petfinderImageView = (ImageView) mView.findViewById(R.id.petfinderImageView);
         TextView petfinderNameTextView = (TextView) mView.findViewById(R.id.petfinderNameTextView);
-        TextView lastUpdateTextView = (TextView) mView.findViewById(R.id.lastUpdateTextView);
+        TextView lastUpdateTextView = (TextView) mView.findViewById(R.id.breedTextView);
         TextView ageTextView = (TextView) mView.findViewById(R.id.ageTextView);
 
         Picasso.with(mContext)

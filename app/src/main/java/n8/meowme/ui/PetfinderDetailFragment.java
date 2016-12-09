@@ -35,7 +35,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     @Bind(R.id.petinderFragmentImageView) ImageView mPetfinderFragmentImageView;
     @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
     @Bind(R.id.ageTextView) TextView mAgeTextView;
-    @Bind(R.id.lastUpdateTextView) TextView mLastUpdateTextView;
+    @Bind(R.id.breedTextView) TextView mLastUpdateTextView;
     @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
     @Bind(R.id.phoneTextView) TextView mPhoneTextView;
     @Bind(R.id.addressTextView) TextView mAddressTextView;
@@ -70,7 +70,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
 
         mPetfinderNameTextView.setText(mPetfinder.getName());
         mAgeTextView.setText("Age: " + mPetfinder.getAge());
-        mLastUpdateTextView.setText("Breed:" + android.text.TextUtils.join("/", mPetfinder.getBreed()));
+        mLastUpdateTextView.setText("Breed: " + android.text.TextUtils.join(" /", mPetfinder.getBreed()));
         mWebsiteTextView.setText(mPetfinder.getWebsite());
         mPhoneTextView.setText(mPetfinder.getPhoneNumber());
         mAddressTextView.setText(mPetfinder.getAddress());

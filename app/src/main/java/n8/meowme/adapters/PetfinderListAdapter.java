@@ -56,7 +56,7 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
     public class PetfinderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
         @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
-        @Bind(R.id.lastUpdateTextView) TextView mLastUpdateTextView;
+        @Bind(R.id.breedTextView) TextView mLastUpdateTextView;
         @Bind(R.id.ageTextView) TextView mAgeTextView;
 
         private Context mContext;
