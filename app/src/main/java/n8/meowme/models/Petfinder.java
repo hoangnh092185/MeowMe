@@ -2,6 +2,9 @@ package n8.meowme.models;
 
 import org.parceler.Parcel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Guest on 12/2/16.
  */
@@ -11,7 +14,6 @@ public class Petfinder {
     String name;
     String lastUpdate;
     String age;
-//   String breed;
     String imageUrl;
     String website;
     String phoneNumber;
@@ -19,15 +21,18 @@ public class Petfinder {
     String city;
     String zip;
     String address;
-
     String petId;
     String shelterPetId;
     String sex;
     String description;
 
+    List<String> breed = new ArrayList<>();
+
+
+
     public Petfinder(){}
 
-    public Petfinder(String name, String lastUpdate, String age, String imageUrl, String website, String phoneNumber,String state, String city, String zip, String address, String petId, String shelterPetId, String sex, String description) {
+    public Petfinder(String name, String lastUpdate, String age, String imageUrl, String website, String phoneNumber,String state, String city, String zip, String address, String petId, String shelterPetId, String sex, String description, ArrayList<String> breed) {
         this.name = name;
         this.lastUpdate = lastUpdate;
         this.age = age;
@@ -42,6 +47,7 @@ public class Petfinder {
         this.shelterPetId = shelterPetId;
         this.sex = sex;
         this.description = description;
+        this.breed = breed;
     }
 
     public String getName(){
@@ -89,4 +95,7 @@ public class Petfinder {
         return description;
     }
 
+    public List<String> getBreed() {
+        return breed;
+    }
 }

@@ -1,5 +1,7 @@
 package n8.meowme.services;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,19 +70,25 @@ public class PetfinderService {
                     String shelterPetId = petInfoJSON.getJSONObject("shelterPetId").optString("$t", "N/A");
                     String sex = petInfoJSON.getJSONObject("sex").getString("$t");
                     String desprciption = petInfoJSON.getJSONObject("description").getString("$t");
-//                      ArrayList<String> breed = new ArrayList<>();
-//                    JSONArray breedJSON = petInfoJSON.getJSONObject("breeds").getJSONArray("breed");
-//                    for (int j=0; j<breedJSON.length(); j++){
-//                        breed.add(breedJSON.getJSONObject(j).getString("$t"));
-//                    }
+
+
+                    ArrayList<String> breed = new ArrayList<>();
+                    JSONArray breedJSON = petInfoJSON.getJSONObject("breeds").optJSONArray("breed");
+                    if (breedJSON != null){
+                        for (int j=0; j<breedJSON.length(); j++){
+                            breed.add(breedJSON.getJSONObject(j).getString("$t"));
+                        }
+                    } else {
+                        breed.add(0, petInfoJSON.getJSONObject("breeds").getJSONObject("breed").getString("$t"));
+                    }
+
 
 //                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 //                    SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
 //                    Date d = sdf.parse(dateFormat);
 //                    String lastUpdate = sdf.parse(dateFormat).toString();
 
-
-                    Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL, website, phoneNumber, state, city, zip, address, petId, shelterPetId, sex, desprciption);
+                    Petfinder petfinder = new Petfinder(name, lastUpdate, age, imageURL, website, phoneNumber, state, city, zip, address, petId, shelterPetId, sex, desprciption, breed);
                     petfinders.add(petfinder);
                 }
             }
