@@ -1,9 +1,7 @@
 package n8.meowme.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +11,6 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import n8.meowme.Constants;
 import n8.meowme.R;
 import n8.meowme.adapters.PetfinderListAdapter;
 import n8.meowme.models.Petfinder;
@@ -25,12 +22,12 @@ import okhttp3.Response;
 public class PetfinderListActivity extends AppCompatActivity {
     public static final String TAG = PetfinderListActivity.class.getSimpleName();
 
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private PetfinderListAdapter mAdapter;
 
+    private PetfinderListAdapter mAdapter;
     public ArrayList<Petfinder> mPetfinders = new ArrayList<>();
 
     @Override
@@ -41,13 +38,14 @@ public class PetfinderListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
+        getPets(location);
+//
 
-
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        if (mRecentAddress != null) {
-            getPets(mRecentAddress);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        if (mRecentAddress != null) {
+//            getPets(mRecentAddress);
+//        }
 //        else {
 //            getPets(location);
 //        }
