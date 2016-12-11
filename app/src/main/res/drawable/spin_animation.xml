@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <animation-list android:id="@+id/selected" android:oneshot="false">
+        <item android:drawable="@drawable/catgif-01" android:duration="50" />
+        <item android:drawable="@drawable/catgif-02" android:duration="50" />
+        <item android:drawable="@drawable/catgif-03" android:duration="50" />
+        <item android:drawable="@drawable/catgif-04" android:duration="50" />
+        <item android:drawable="@drawable/catgif-05" android:duration="50" />
+        <item android:drawable="@drawable/catgif-06" android:duration="50" />
+        <item android:drawable="@drawable/catgif-07" android:duration="50" />
+        <item android:drawable="@drawable/catgif-08" android:duration="50" />
+        <item android:drawable="@drawable/catgif-09" android:duration="50" />
+        <item android:drawable="@drawable/catgif-10" android:duration="50" />
+        <item android:drawable="@drawable/catgif-11" android:duration="50" />
+        <item android:drawable="@drawable/catgif-12" android:duration="50" />
+        <item android:drawable="@drawable/catgif-13" android:duration="50" />
+        <item android:drawable="@drawable/catgif-14" android:duration="50" />
+        <item android:drawable="@drawable/catgif-15" android:duration="50" />
+        <item android:drawable="@drawable/catgif-16" android:duration="50" />
+        <item android:drawable="@drawable/catgif-17" android:duration="50" />
+        <item android:drawable="@drawable/catgif-18" android:duration="50" />
+        <item android:drawable="@drawable/catgif-19" android:duration="50" />
+        <item android:drawable="@drawable/catgif-20" android:duration="50" />
+        <item android:drawable="@drawable/catgif-21" android:duration="50" />
+        <item android:drawable="@drawable/catgif-22" android:duration="50" />
+        <item android:drawable="@drawable/catgif-23" android:duration="50" />
+        <item android:drawable="@drawable/catgif-24" android:duration="50" />
+        <item android:drawable="@drawable/catgif-25" android:duration="50" />
+    </animation-list>
+</selector>

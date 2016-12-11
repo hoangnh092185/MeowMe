@@ -64,20 +64,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         createAuthProgressDialog();
     }
     private void createAuthProgressDialog() {
-//        // Load the ImageView that will host the animation and
-//        // set its background to our AnimationDrawable XML resource.
-//        ImageView img = (ImageView)findViewById(R.id.spinning_wheel_image);
-//        img.setBackgroundResource(R.drawable.spin_animation);
-//
-//        // Get the background, which has been compiled to an AnimationDrawable object.
-//        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-//
-//        // Start the animation (looped playback by default).
-//        frameAnimation.start();
-
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading...Not Really, ");
-        mAuthProgressDialog.setMessage("Your Shit is Broken... hey look at this cute Cat");
+        mAuthProgressDialog.setMessage("Oops, We can't find your account... Our best coder is on it.");
         mAuthProgressDialog.setCancelable(true);
     }
 
