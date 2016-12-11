@@ -28,20 +28,20 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/zipCodeEditText"
-        android:hint="Enter Zip Code"
-        android:textAlignment="center"
-        android:singleLine="true"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:background="@color/colorPrimaryText"
-        android:paddingBottom="10sp"
-        android:layout_above="@+id/findPetfindersButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/zipCodeEditText"-->
+        <!--android:hint="Enter Zip Code"-->
+        <!--android:textAlignment="center"-->
+        <!--android:singleLine="true"-->
+        <!--android:textSize="30dp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:background="@color/colorPrimaryText"-->
+        <!--android:paddingBottom="10sp"-->
+        <!--android:layout_above="@+id/findPetfindersButton"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
 
     <Button
         android:layout_width="match_parent"

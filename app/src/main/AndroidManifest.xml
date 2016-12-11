@@ -19,7 +19,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.PetfinderListActivity" />
+        <activity android:name=".ui.PetfinderListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.UserInputActivity" />
+        </activity>
+
         <activity android:name=".ui.PetfinderDetailActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
         <activity android:name=".ui.LoginActivity">
