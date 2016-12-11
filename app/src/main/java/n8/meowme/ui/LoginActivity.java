@@ -57,11 +57,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                     finish();
                 }
-                createAuthProgressDialog();
+
             }
         };
 
-
+        createAuthProgressDialog();
     }
     private void createAuthProgressDialog() {
 //        // Load the ImageView that will host the animation and
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading...Not Really, ");
         mAuthProgressDialog.setMessage("Your Shit is Broken... hey look at this cute Cat");
-        mAuthProgressDialog.setCancelable(false);
+        mAuthProgressDialog.setCancelable(true);
     }
 
 
@@ -115,8 +115,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Sorry, Unknown account.",
                                     Toast.LENGTH_LONG).show();
+
+                            onStop();
                         }
                     }
                 });
