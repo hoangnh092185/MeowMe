@@ -4,8 +4,14 @@ package n8.meowme.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,7 +39,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
 
-
+    @Bind(R.id.homeTextView) TextView mhomeTextView;
     @Bind(R.id.petinderFragmentImageView) ImageView mPetfinderFragmentImageView;
     @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
     @Bind(R.id.ageTextView) TextView mAgeTextView;
@@ -93,9 +99,12 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         mPhoneTextView.setOnClickListener(this);
         mAddressTextView.setOnClickListener(this);
         mSaveTextView.setOnClickListener(this);
+        mhomeTextView.setOnClickListener(this);
 
         return view;
     }
+
+
     @Override
     public void onClick(View v) {
         if(v == mWebsiteTextView){
@@ -112,6 +121,10 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("geo:0,0?q=" + mPetfinder.getAddress() + mPetfinder.getCity() + mPetfinder.getState() + mPetfinder.getZip() ));
             startActivity(mapIntent);
+        }
+        if(v == mhomeTextView){
+            Intent intent = new Intent(PetfinderDetailFragment.this, UserInputActivity.class);
+            startActivity(intent);
         }
         if (v == mSaveTextView){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

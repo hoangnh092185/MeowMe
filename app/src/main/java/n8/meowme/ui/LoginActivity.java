@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void createAuthProgressDialog() {
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading...Not Really, ");
-        mAuthProgressDialog.setMessage("Oops, We can't find your account... Our best coder is on it.");
+        mAuthProgressDialog.setMessage("Oops, If the page is not loading... Try again later.");
         mAuthProgressDialog.setCancelable(true);
     }
 
@@ -83,16 +83,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
     private void loginWithPassword() {
-        String email = mEmailEditText.getText().toString().trim();
+        String email = mEmailEditText.getText().toString().trim().toLowerCase();
         String password = mPasswordEditText.getText().toString().trim();
-        if (email.equals("")) {
+        if (email.equals("") || !email.contains("@") || !email.contains(".com")) {
             mEmailEditText.setError("Please enter your email");
             return;
         }
-        if (password.equals("")) {
-            mPasswordEditText.setError("Password cannot be blank");
+        if (password.equals("") || password.length() < 6 ) {
+            mPasswordEditText.setError("Password character has to be greater than 6");
             return;
         }
+
 
         mAuthProgressDialog.show();
 

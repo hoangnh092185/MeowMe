@@ -46,7 +46,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show Me"
+        android:text="Display Cute Cats Near My Area"
         android:textColor="@color/colorPrimaryText"
         android:id="@+id/findPetfindersButton"
         android:textSize="20sp"
