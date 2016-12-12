@@ -104,11 +104,7 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if(v == mUserInputButton){
-//            String location = mZipCodeEditText.getText().toString();
-//            saveLocationToFirebase(location);
-
             Intent intent = new Intent(UserInputActivity.this, PetfinderListActivity.class);
-//            intent.putExtra("location", location);
             startActivity(intent);
         }
         if(v == mSavedListsButton){

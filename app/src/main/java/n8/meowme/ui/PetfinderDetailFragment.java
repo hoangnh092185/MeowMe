@@ -4,14 +4,8 @@ package n8.meowme.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -122,10 +116,12 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                     Uri.parse("geo:0,0?q=" + mPetfinder.getAddress() + mPetfinder.getCity() + mPetfinder.getState() + mPetfinder.getZip() ));
             startActivity(mapIntent);
         }
-        if(v == mhomeTextView){
-            Intent intent = new Intent(PetfinderDetailFragment.this, UserInputActivity.class);
-            startActivity(intent);
-        }
+
+//        if (v == mhomeTextView){
+//            Intent intent = new Intent(PetfinderDetailFragment.this, UserInputActivity.class);
+//            startActivity(intent);
+//        }
+//
         if (v == mSaveTextView){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
@@ -133,12 +129,29 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
                     .child(uid);
+
             DatabaseReference pushRef = petfinderRef.push();
             String pushId = pushRef.getKey();
             mPetfinder.setPushId(pushId);
             pushRef.setValue(mPetfinder);
 
-
+//            petfinderRef.child("petId").addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                    if (dataSnapshot.getValue() == null) {
+//                        Toast.makeText(getContext(), "Doesn't Excist", Toast.LENGTH_SHORT).show();
+//                        Log.d("dataSnapSHot", dataSnapshot.getValue().toString());
+//                    } else {
+//                        Toast.makeText(getContext(), "Exists", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
 //            petfinderRef.push().setValue(mPetfinder);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
