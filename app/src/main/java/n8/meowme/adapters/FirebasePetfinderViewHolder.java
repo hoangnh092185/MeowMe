@@ -70,8 +70,8 @@ public class FirebasePetfinderViewHolder extends RecyclerView.ViewHolder impleme
                 int itemPoition = getLayoutPosition();
 
                 Intent intent = new Intent(mContext, PetfinderDetailActivity.class);
-                intent.putExtra("position", itemPoition + "");
-                intent.putExtra("Petfinders", Parcels.wrap(petfinders));
+                intent.putExtra("position", itemPoition);
+                intent.putExtra("petfinders", Parcels.wrap(petfinders));
 
                 mContext.startActivity(intent);
             }

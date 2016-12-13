@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -117,23 +120,56 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
             startActivity(mapIntent);
         }
 
-//        if (v == mhomeTextView){
-//            Intent intent = new Intent(PetfinderDetailFragment.this, UserInputActivity.class);
-//            startActivity(intent);
-//        }
-//
+        if (v == mhomeTextView){
+            Intent intent = new Intent(getActivity(), UserInputActivity.class);
+            startActivity(intent);
+        }
+
         if (v == mSaveTextView){
+
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
+
+            final DatabaseReference petIdRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
+                    .child(uid);
+
+            petIdRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    boolean match = false;
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        String currentId = snapshot.getValue(Petfinder.class).getPetId();
+                        if(currentId.equals(mPetfinder.getPetId())){
+                            match = true;
+                            Toast.makeText(getContext(), "Already in the list", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    }
+                    if (!match) {
+                        DatabaseReference pushRef = petIdRef.push();
+                        String pushId = pushRef.getKey();
+                        mPetfinder.setPushId(pushId);
+                        pushRef.setValue(mPetfinder);
+                        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    }
+                    else {Toast.makeText(getContext(), "You already have this game", Toast.LENGTH_SHORT).show();}
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
             DatabaseReference petfinderRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
                     .child(uid);
 
-            DatabaseReference pushRef = petfinderRef.push();
-            String pushId = pushRef.getKey();
-            mPetfinder.setPushId(pushId);
-            pushRef.setValue(mPetfinder);
+
 
 //            petfinderRef.child("petId").addListenerForSingleValueEvent(new ValueEventListener() {
 //                @Override
@@ -153,7 +189,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
 //                }
 //            });
 //            petfinderRef.push().setValue(mPetfinder);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }
