@@ -23,16 +23,20 @@ import n8.meowme.R;
 import n8.meowme.adapters.PetfinderListAdapter;
 import n8.meowme.models.Petfinder;
 import n8.meowme.services.PetfinderService;
+import n8.meowme.util.OnPetfinderSelectedListener;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class PetfinderListActivity extends AppCompatActivity {
+public class PetfinderListActivity extends AppCompatActivity implements OnPetfinderSelectedListener {
     public static final String TAG = PetfinderListActivity.class.getSimpleName();
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
+
+    private Integer mPosition;
+//    ArrayList<Petfinder> mPetfinders;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
@@ -57,6 +61,11 @@ public class PetfinderListActivity extends AppCompatActivity {
             getPets(mRecentAddress);
         }
 
+    }
+    @Override
+    public void onPetfinderSelected(Integer position, ArrayList<Petfinder> petfinders){
+        mPosition = position;
+        mPetfinders = petfinders;
     }
 
     @Override
@@ -113,7 +122,7 @@ public class PetfinderListActivity extends AppCompatActivity {
                 PetfinderListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter = new PetfinderListAdapter(getApplicationContext(), mPetfinders);
+//                        mAdapter = new PetfinderListAdapter(getApplicationContext());
 
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PetfinderListActivity.this);

@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import n8.meowme.R;
 import n8.meowme.models.Petfinder;
 import n8.meowme.ui.PetfinderDetailActivity;
+import n8.meowme.util.OnPetfinderSelectedListener;
 
 /**
  * Created by Guest on 12/4/16.
@@ -30,10 +31,13 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
 
     private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private Context mContext;
+    private OnPetfinderSelectedListener mOnPetfinderSelectedListener;
 
-    public PetfinderListAdapter(Context context, ArrayList<Petfinder> petfinders){
+
+    public PetfinderListAdapter(Context context, ArrayList<Petfinder> petfinders, OnPetfinderSelectedListener onPetfinderSelectedListener){
         mContext = context;
         mPetfinders = petfinders;
+        mOnPetfinderSelectedListener = onPetfinderSelectedListener;
     }
 
     @Override
@@ -42,6 +46,15 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
         PetfinderViewHolder viewHolder = new PetfinderViewHolder(view);
         return viewHolder;
     }
+//    @Override
+//    public void onAttach(Context context){
+////        super.onAttach(context);
+//        try{
+//            mOnPetfinderSelectedListener = (OnPetfinderSelectedListener) context;
+//        } catch(ClassCastException e) {
+//            throw new ClassCastException((context.toString() + e.getMessage()));
+//        }
+//    }
 
     @Override
     public void onBindViewHolder(PetfinderListAdapter.PetfinderViewHolder holder, int position) {
@@ -56,7 +69,8 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
     public class PetfinderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
         @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
-        @Bind(R.id.breedTextView) TextView mLastUpdateTextView;
+        @Bind(R.id.breedTextView) TextView mBreedTextView;
+        @Bind(R.id.lastUpdatedTextView) TextView mLastUpdatedTextView;
         @Bind(R.id.ageTextView) TextView mAgeTextView;
 
         private Context mContext;
@@ -67,6 +81,12 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
         }
+//        private void createDetailFragment(int position){
+//            PetfinderDetailFragment detailFragment = PetfinderDetailFragment.newInstance(mPetfinders, position, Constants.SOURCE_FIND);
+//            FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+//            ft.replace(R.id.petfinderDetailContainer, detailFragment);
+//            ft.commit();
+//        }
         public void bindPetfinder(Petfinder petfinder){
             Picasso.with(mContext)
                     .load(petfinder.getImageUrl())
@@ -75,7 +95,8 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
                     .into(mPetfinderImageView);
 
             mPetfinderNameTextView.setText(petfinder.getName());
-            mLastUpdateTextView.setText("Last listed: "+ petfinder.getLastUpdate());
+            mLastUpdatedTextView.setText("Last listed: "+ petfinder.getLastUpdate());
+            mBreedTextView.setText("Breed: " + android.text.TextUtils.join(" /", petfinder.getBreed()));
             mAgeTextView.setText("Age: " + petfinder.getAge());
         }
 

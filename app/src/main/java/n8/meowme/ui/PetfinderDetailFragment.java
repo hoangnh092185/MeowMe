@@ -33,8 +33,8 @@ import n8.meowme.models.Petfinder;
  * A simple {@link Fragment} subclass.
  */
 public class PetfinderDetailFragment extends Fragment implements View.OnClickListener {
-    private static final int MAX_WIDTH = 400;
-    private static final int MAX_HEIGHT = 300;
+    private static final int MAX_WIDTH = 600;
+    private static final int MAX_HEIGHT = 500;
 
     @Bind(R.id.homeTextView) TextView mhomeTextView;
     @Bind(R.id.petinderFragmentImageView) ImageView mPetfinderFragmentImageView;

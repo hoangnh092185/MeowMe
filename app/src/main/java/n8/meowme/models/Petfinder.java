@@ -26,6 +26,7 @@ public class Petfinder {
     String sex;
     String description;
     String pushId;
+    String index;
 
     List<String> breed = new ArrayList<>();
 
@@ -49,6 +50,7 @@ public class Petfinder {
         this.sex = sex;
         this.description = description;
         this.breed = breed;
+        this.index = "not_specified";
     }
 
     public String getName(){
@@ -106,5 +108,13 @@ public class Petfinder {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }
