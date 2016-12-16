@@ -144,7 +144,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                         String currentId = snapshot.getValue(Petfinder.class).getPetId();
                         if(currentId.equals(mPetfinder.getPetId())){
                             match = true;
-                            Toast.makeText(getContext(), "Already in the list", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "You already have " + mPetfinder.getName() + " on your list.", Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -155,7 +155,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                         pushRef.setValue(mPetfinder);
                         Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                     }
-                    else {Toast.makeText(getContext(), "You already have this game", Toast.LENGTH_SHORT).show();}
+//                    else {Toast.makeText(getContext(), "You already have " + mPetfinder.getName() + " on your list.", Toast.LENGTH_SHORT).show();}
                 }
 
                 @Override
@@ -169,27 +169,6 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                     .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
                     .child(uid);
 
-
-
-//            petfinderRef.child("petId").addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                    if (dataSnapshot.getValue() == null) {
-//                        Toast.makeText(getContext(), "Doesn't Excist", Toast.LENGTH_SHORT).show();
-//                        Log.d("dataSnapSHot", dataSnapshot.getValue().toString());
-//                    } else {
-//                        Toast.makeText(getContext(), "Exists", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//            });
-//            petfinderRef.push().setValue(mPetfinder);
-//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }
