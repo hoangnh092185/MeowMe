@@ -22,21 +22,14 @@ import n8.meowme.R;
 public class UserInputActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = UserInputActivity.class.getSimpleName();
 
-//    private DatabaseReference mSearchedLocationReference;
-//    private ValueEventListener mSearchedLocationReferenceListener;
-//
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-//
-//    private PetfinderListAdapter mAdapter;
-//    public ArrayList<Petfinder> mPetfinders = new ArrayList<>();
 
     @Bind(R.id.findPetfindersButton) Button mUserInputButton;
     @Bind(R.id.userInputTextView) TextView mUserInputTextView;
-//    @Bind(R.id.zipCodeEditText) EditText mZipCodeEditText;
     @Bind(R.id.savedListsButton) Button mSavedListsButton;
 
-//    private String userInputName = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,26 +38,6 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_user_input);
         ButterKnife.bind(this);
 
-//        mSearchedLocationReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
-
-//        mSearchedLocationReferenceListener = mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()){
-//                    String location = locationSnapshot.getValue().toString();
-//                    Log.d("Locations updated", "location: " + location);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -89,16 +62,6 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
 
         mUserInputTextView.setText("Welcome to MeowMe, where we end your felinelessnes!!");
 
-//        Intent intent = getIntent();
-//        String inputName = intent.getStringExtra("inputName");
-
-
-//        userInputName = inputName;
-//        if(userInputName == null){
-//            mUserInputTextView.setText("Welcome!! Enter your area code and I show you cute Cat!");
-//        }else {
-//
-//        }
     }
 
     @Override
@@ -135,16 +98,6 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
         startActivity(intent);
         finish();
     }
-
-
-//    public void saveLocationToFirebase(String location){
-//        mSearchedLocationReference.push().setValue(location);
-//    }
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
-//    }
 
     @Override
     public void onStart() {

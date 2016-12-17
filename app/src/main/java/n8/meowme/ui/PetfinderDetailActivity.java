@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import n8.meowme.Constants;
 import n8.meowme.R;
 import n8.meowme.adapters.PetfinderPagerAdapter;
 import n8.meowme.models.Petfinder;
@@ -19,6 +20,7 @@ public class PetfinderDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager) ViewPager mViewPager;
     private PetfinderPagerAdapter adapterViewPager;
     ArrayList<Petfinder> mPetfinders = new ArrayList<>();
+    private String mSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,9 @@ public class PetfinderDetailActivity extends AppCompatActivity {
         mPetfinders = Parcels.unwrap(getIntent().getParcelableExtra("petfinders"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
-        adapterViewPager = new PetfinderPagerAdapter(getSupportFragmentManager(), mPetfinders);
+        mSource = getIntent().getStringExtra(Constants.KEY_SOURCE);
 
+        adapterViewPager = new PetfinderPagerAdapter(getSupportFragmentManager(), mPetfinders);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
 

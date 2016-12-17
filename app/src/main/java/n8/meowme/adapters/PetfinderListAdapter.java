@@ -26,8 +26,8 @@ import n8.meowme.util.OnPetfinderSelectedListener;
  * Created by Guest on 12/4/16.
  */
 public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdapter.PetfinderViewHolder> {
-    private static final int MAX_WIDTH = 400;
-    private static final int MAX_HEIGHT = 300;
+    private static final int MAX_WIDTH = 600;
+    private static final int MAX_HEIGHT = 500;
 
     private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private Context mContext;
