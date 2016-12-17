@@ -62,16 +62,21 @@ public class SavedPetfinderListFragment extends Fragment implements OnStartDragL
 //                .child(uid);
 
 
-        mFirebaseAdapter = new FirebasePetfinderListAdapter(Petfinder.class,
-                R.layout.petfinder_list_item_drag,
-                FirebasePetfinderViewHolder.class,
-                query, this, getActivity());
+        mFirebaseAdapter = new FirebasePetfinderListAdapter(Petfinder.class, R.layout.petfinder_list_item_drag, FirebasePetfinderViewHolder.class, query, this, getActivity());
 
 
         mRecyclerView.setHasFixedSize(true);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+
+        mFirebaseAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver(){
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount){
+                super.onItemRangeInserted(positionStart, itemCount);
+                mFirebaseAdapter.notifyDataSetChanged();
+            }
+        });
 
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
