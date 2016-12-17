@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import n8.meowme.Constants;
 import n8.meowme.R;
 import n8.meowme.models.Petfinder;
 import n8.meowme.ui.PetfinderDetailActivity;
@@ -34,27 +35,18 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
     private OnPetfinderSelectedListener mOnPetfinderSelectedListener;
 
 
-    public PetfinderListAdapter(Context context, ArrayList<Petfinder> petfinders, OnPetfinderSelectedListener onPetfinderSelectedListener){
+    public PetfinderListAdapter(Context context, ArrayList<Petfinder> petfinders, OnPetfinderSelectedListener petfinderSelectedListener){
         mContext = context;
         mPetfinders = petfinders;
-        mOnPetfinderSelectedListener = onPetfinderSelectedListener;
+        mOnPetfinderSelectedListener = petfinderSelectedListener;
     }
 
     @Override
     public PetfinderListAdapter.PetfinderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.petfinder_list_item, parent, false);
-        PetfinderViewHolder viewHolder = new PetfinderViewHolder(view);
+        PetfinderViewHolder viewHolder = new PetfinderViewHolder(view, mPetfinders, mOnPetfinderSelectedListener);
         return viewHolder;
     }
-//    @Override
-//    public void onAttach(Context context){
-////        super.onAttach(context);
-//        try{
-//            mOnPetfinderSelectedListener = (OnPetfinderSelectedListener) context;
-//        } catch(ClassCastException e) {
-//            throw new ClassCastException((context.toString() + e.getMessage()));
-//        }
-//    }
 
     @Override
     public void onBindViewHolder(PetfinderListAdapter.PetfinderViewHolder holder, int position) {
@@ -74,11 +66,23 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
         @Bind(R.id.ageTextView) TextView mAgeTextView;
 
         private Context mContext;
+//        private int mOrientation;
+        private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
+        private OnPetfinderSelectedListener mPetfinderSelectedListener;
 
-        public PetfinderViewHolder(View itemView){
+        public PetfinderViewHolder(View itemView, ArrayList<Petfinder> petfinders, OnPetfinderSelectedListener petfinderSelectedListener){
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+
+//            mOrientation = itemView.getContext();
+            mPetfinders = petfinders;
+            mPetfinderSelectedListener = petfinderSelectedListener;
+
+//            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+//                createDetailFragment(0);
+//            }
             itemView.setOnClickListener(this);
         }
 //        private void createDetailFragment(int position){
@@ -103,11 +107,30 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
         @Override
         public void onClick(View v){
             int itemPosition = getLayoutPosition();
+            mPetfinderSelectedListener.onPetfinderSelected(itemPosition, mPetfinders, Constants.SOURCE_FIND);
             Intent intent = new Intent(mContext, PetfinderDetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("petfinders", Parcels.wrap(mPetfinders));
+            intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+            intent.putExtra(Constants.EXTRA_KEY_PETFINDERS, Parcels.wrap(mPetfinders));
+            intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_FIND);
             mContext.startActivity(intent);
         }
+
+
+//        @Override
+//        public void onClick(View v) {
+//            int itemPosition = getLayoutPosition();
+//            mPetfinderSelectedListener.onPetfinderSelected(itemPosition, mPetfinders, Constants.SOURCE_FIND);
+//            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                createDetailFragment(itemPosition);
+//            } else {
+//                Intent intent = new Intent(mContext, PetfinderDetailActivity.class);
+//                intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+//                intent.putExtra(Constants.EXTRA_KEY_PETFINDERS, Parcels.wrap(mPetfinders));
+//                intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_FIND);
+//                mContext.startActivity(intent);
+//            }
+//        }
+
     }
 
 }

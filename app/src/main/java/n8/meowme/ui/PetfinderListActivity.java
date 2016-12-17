@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import n8.meowme.Constants;
 import n8.meowme.R;
 import n8.meowme.models.Petfinder;
+import n8.meowme.util.OnPetfinderSelectedListener;
 
-public class PetfinderListActivity extends AppCompatActivity {
+public class PetfinderListActivity extends AppCompatActivity implements OnPetfinderSelectedListener{
     public static final String TAG = PetfinderListActivity.class.getSimpleName();
     private Integer mPosition;
     ArrayList<Petfinder> mPetfinders;
@@ -51,11 +52,11 @@ public class PetfinderListActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onPetfinderSelected(Integer position, ArrayList<Petfinder> petfinders, String source){
-//        mPosition = position;
-//        mPetfinders = petfinders;
-//        mSource = source;
-//    }
+    @Override
+    public void onPetfinderSelected(Integer position, ArrayList<Petfinder> petfinders, String source){
+        mPosition = position;
+        mPetfinders = petfinders;
+        mSource = source;
+    }
 
 }
