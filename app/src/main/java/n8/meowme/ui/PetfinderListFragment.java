@@ -34,7 +34,7 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PetfinderListFragment extends Fragment {
+public class PetfinderListFragment extends Fragment  {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private PetfinderListAdapter mAdapter;
@@ -88,7 +88,6 @@ public class PetfinderListFragment extends Fragment {
                     @Override
                     public void run() {
                         mAdapter = new PetfinderListAdapter(getActivity(), mPetfinders);
-
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         mRecyclerView.setLayoutManager(layoutManager);
