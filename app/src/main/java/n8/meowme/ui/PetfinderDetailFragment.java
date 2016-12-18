@@ -47,15 +47,15 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     private static final int MAX_WIDTH = 600;
     private static final int MAX_HEIGHT = 500;
 
-    @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
-    @Bind(R.id.homeTextView) TextView mhomeTextView;
-    @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
-    @Bind(R.id.ageTextView) TextView mAgeTextView;
-    @Bind(R.id.breedTextView) TextView mLastUpdateTextView;
-    @Bind(R.id.websiteTextView) TextView mWebsiteTextView;
-    @Bind(R.id.phoneTextView) TextView mPhoneTextView;
-    @Bind(R.id.addressTextView) TextView mAddressTextView;
-    @Bind(R.id.saveTextView) TextView mSavePetTextView;
+    @Bind(R.id.petfinderImageView) ImageView mPetfinderImageLabel;
+    @Bind(R.id.homeTextView) TextView mhomeLabel;
+    @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameLabel;
+    @Bind(R.id.ageTextView) TextView mAgeLabel;
+    @Bind(R.id.breedTextView) TextView mBreedLabel;
+    @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
+    @Bind(R.id.phoneTextView) TextView mPhoneLabel;
+    @Bind(R.id.addressTextView) TextView mAddressLabel;
+    @Bind(R.id.saveTextView) TextView mSavePetLabel;
 
     private Petfinder mPetfinder;
 
@@ -86,7 +86,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     @Override
     public void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        mPetfinder = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_PETFINDERS));
+        mPetfinders = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_PETFINDERS));
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mPetfinder = mPetfinders.get(mPosition);
         mSource = getArguments().getString(Constants.KEY_SOURCE);
@@ -124,7 +124,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == getActivity().RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mPetfinderImageView.setImageBitmap(imageBitmap);
+            mPetfinderImageLabel.setImageBitmap(imageBitmap);
             encodeBitmapAndSaveToFirebase(imageBitmap);
         }
     }
@@ -149,7 +149,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         if (!mPetfinder.getImageUrl().contains("http")) {
             try {
                 Bitmap image = decodeFromFirebaseBase64(mPetfinder.getImageUrl());
-                mPetfinderImageView.setImageBitmap(image);
+                mPetfinderImageLabel.setImageBitmap(image);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -158,30 +158,35 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                     .load(mPetfinder.getImageUrl())
                     .resize(MAX_WIDTH, MAX_HEIGHT)
                     .centerCrop()
-                    .into(mPetfinderImageView);
+                    .into(mPetfinderImageLabel);
         }
-
+//
         if (mSource.equals(Constants.SOURCE_SAVED)) {
-            mSavePetTextView.setVisibility(View.GONE);
+            mSavePetLabel.setVisibility(View.GONE);
         } else {
-            // This line of code should already exist. Make sure it now resides in this conditional:
-            mSavePetTextView.setOnClickListener(this);
+            mSavePetLabel.setOnClickListener(this);
         }
+//
+//        Picasso.with(view.getContext())
+//                    .load(mPetfinder.getImageUrl())
+//                    .resize(MAX_WIDTH, MAX_HEIGHT)
+//                    .centerCrop()
+//                    .into(mPetfinderImageLabel);
+
+        mPetfinderNameLabel.setText(mPetfinder.getName());
+        mAgeLabel.setText("Age: " + mPetfinder.getAge());
+        mBreedLabel.setText("Breed: " + android.text.TextUtils.join(" /", mPetfinder.getBreed()));
+        mWebsiteLabel.setText(mPetfinder.getWebsite());
+        mPhoneLabel.setText(mPetfinder.getPhoneNumber());
+        mAddressLabel.setText(mPetfinder.getAddress());
 
 
-        mPetfinderNameTextView.setText(mPetfinder.getName());
-        mAgeTextView.setText("Age: " + mPetfinder.getAge());
-        mLastUpdateTextView.setText("Breed: " + android.text.TextUtils.join(" /", mPetfinder.getBreed()));
-        mWebsiteTextView.setText(mPetfinder.getWebsite());
-        mPhoneTextView.setText(mPetfinder.getPhoneNumber());
-        mAddressTextView.setText(mPetfinder.getAddress());
+        mWebsiteLabel.setOnClickListener(this);
+        mPhoneLabel.setOnClickListener(this);
+        mAddressLabel.setOnClickListener(this);
+        mhomeLabel.setOnClickListener(this);
+//        mSavePetLabel.setOnClickListener(this);
 
-
-        mWebsiteTextView.setOnClickListener(this);
-        mPhoneTextView.setOnClickListener(this);
-        mAddressTextView.setOnClickListener(this);
-        mSavePetTextView.setOnClickListener(this);
-        mhomeTextView.setOnClickListener(this);
 
         return view;
     }
@@ -193,28 +198,28 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        if(v == mWebsiteTextView){
+        if(v == mWebsiteLabel){
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(Constants.PETFINDER_PET_DETAIL_URL + mPetfinder.getPetId()));
             startActivity(webIntent);
         }
-        if (v == mPhoneTextView){
+        if (v == mPhoneLabel){
             Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
                     Uri.parse("tel: " + mPetfinder.getPhoneNumber()));
             startActivity(phoneIntent);
         }
-        if (v == mAddressTextView) {
+        if (v == mAddressLabel) {
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("geo:0,0?q=" + mPetfinder.getAddress() + mPetfinder.getCity() + mPetfinder.getState() + mPetfinder.getZip() ));
             startActivity(mapIntent);
         }
 
-        if (v == mhomeTextView){
+        if (v == mhomeLabel){
             Intent intent = new Intent(getActivity(), UserInputActivity.class);
             startActivity(intent);
         }
 
-        if (v == mSavePetTextView){
+        if (v == mSavePetLabel){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
 
@@ -242,7 +247,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                         pushRef.setValue(mPetfinder);
                         Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                     }
-                    else {Toast.makeText(getContext(), "You already have " + mPetfinder.getName() + " on your list.", Toast.LENGTH_SHORT).show();}
+//                    else {Toast.makeText(getContext(), "You already have " + mPetfinder.getName() + " on your list.", Toast.LENGTH_SHORT).show();}
                 }
 
                 @Override
@@ -251,10 +256,10 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                 }
             });
 
-//            DatabaseReference petfinderRef = FirebaseDatabase
-//                    .getInstance()
-//                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
-//                    .child(uid);
+            DatabaseReference petfinderRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
+                    .child(uid);
 
         }
     }
