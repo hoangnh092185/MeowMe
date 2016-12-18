@@ -47,9 +47,8 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     private static final int MAX_WIDTH = 600;
     private static final int MAX_HEIGHT = 500;
 
-    @Bind(R.id.petfinderImageView) ImageView mImageLabel;
+    @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
     @Bind(R.id.homeTextView) TextView mhomeTextView;
-//    @Bind(R.id.petinderFragmentImageView) ImageView mPetfinderFragmentImageView;
     @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
     @Bind(R.id.ageTextView) TextView mAgeTextView;
     @Bind(R.id.breedTextView) TextView mLastUpdateTextView;
@@ -57,12 +56,6 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     @Bind(R.id.phoneTextView) TextView mPhoneTextView;
     @Bind(R.id.addressTextView) TextView mAddressTextView;
     @Bind(R.id.saveTextView) TextView mSavePetTextView;
-
-//    List<String> mCategories = new ArrayList<>();
-//    private DatabaseReference mCategoryReference;
-//    private ValueEventListener mCategoryReferenceListener;
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
 
     private Petfinder mPetfinder;
 
@@ -93,7 +86,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     @Override
     public void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-//        mPetfinder = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_PETFINDERS));
+        mPetfinder = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_PETFINDERS));
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mPetfinder = mPetfinders.get(mPosition);
         mSource = getArguments().getString(Constants.KEY_SOURCE);
@@ -131,7 +124,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == getActivity().RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mImageLabel.setImageBitmap(imageBitmap);
+            mPetfinderImageView.setImageBitmap(imageBitmap);
             encodeBitmapAndSaveToFirebase(imageBitmap);
         }
     }
@@ -156,7 +149,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         if (!mPetfinder.getImageUrl().contains("http")) {
             try {
                 Bitmap image = decodeFromFirebaseBase64(mPetfinder.getImageUrl());
-                mImageLabel.setImageBitmap(image);
+                mPetfinderImageView.setImageBitmap(image);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -165,7 +158,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                     .load(mPetfinder.getImageUrl())
                     .resize(MAX_WIDTH, MAX_HEIGHT)
                     .centerCrop()
-                    .into(mImageLabel);
+                    .into(mPetfinderImageView);
         }
 
         if (mSource.equals(Constants.SOURCE_SAVED)) {
@@ -175,12 +168,6 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
             mSavePetTextView.setOnClickListener(this);
         }
 
-
-//        Picasso.with(view.getContext())
-//                .load(mPetfinder.getImageUrl())
-//                .resize(MAX_WIDTH, MAX_HEIGHT)
-//                .centerCrop()
-//                .into(mPetfinderFragmentImageView);
 
         mPetfinderNameTextView.setText(mPetfinder.getName());
         mAgeTextView.setText("Age: " + mPetfinder.getAge());
@@ -228,8 +215,6 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         }
 
         if (v == mSavePetTextView){
-
-
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
 
@@ -257,7 +242,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                         pushRef.setValue(mPetfinder);
                         Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                     }
-//                    else {Toast.makeText(getContext(), "You already have " + mPetfinder.getName() + " on your list.", Toast.LENGTH_SHORT).show();}
+                    else {Toast.makeText(getContext(), "You already have " + mPetfinder.getName() + " on your list.", Toast.LENGTH_SHORT).show();}
                 }
 
                 @Override
@@ -266,10 +251,10 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                 }
             });
 
-            DatabaseReference petfinderRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
-                    .child(uid);
+//            DatabaseReference petfinderRef = FirebaseDatabase
+//                    .getInstance()
+//                    .getReference(Constants.FIREBASE_CHILD_PETFINDERS)
+//                    .child(uid);
 
         }
     }

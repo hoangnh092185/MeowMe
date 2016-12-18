@@ -30,8 +30,6 @@ public class Petfinder {
 
     List<String> breed = new ArrayList<>();
 
-
-
     public Petfinder(){}
 
     public Petfinder(String name, String lastUpdate, String age, String imageUrl, String website, String phoneNumber,String state, String city, String zip, String address, String petId, String shelterPetId, String sex, String description, ArrayList<String> breed) {

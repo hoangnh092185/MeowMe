@@ -33,6 +33,7 @@ import n8.meowme.util.OnStartDragListener;
  * Created by Guest on 12/16/16.
  */
 public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfinder, FirebasePetfinderViewHolder>  implements ItemTouchHelperAdapter {
+
         private DatabaseReference mRef;
         private OnStartDragListener mOnStartDragListener;
         private Context mContext;
@@ -43,10 +44,10 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
         public FirebasePetfinderListAdapter(Class<Petfinder> modelClass, int modelLayout,
                                             Class<FirebasePetfinderViewHolder> viewHolderClass,
                                             Query ref, OnStartDragListener onStartDragListener, Context context){
-            super(modelClass,modelLayout,viewHolderClass,ref);
-            mRef=ref.getRef();
-            mOnStartDragListener=onStartDragListener;
-            mContext=context;
+            super(modelClass, modelLayout, viewHolderClass, ref);
+            mRef = ref.getRef();
+            mOnStartDragListener = onStartDragListener;
+            mContext = context;
 
             mChildEventListener = mRef.addChildEventListener(new ChildEventListener() {
                 @Override
@@ -74,12 +75,12 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
 
                 }
             });
-            }
+        }
     @Override
     protected void populateViewHolder(final FirebasePetfinderViewHolder viewHolder, Petfinder model, int position) {
         viewHolder.bindPetfinder(model);
-
         mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
+
         if (mOrientation == Configuration.ORIENTATION_LANDSCAPE){
             createDetailFragment(0);
         }

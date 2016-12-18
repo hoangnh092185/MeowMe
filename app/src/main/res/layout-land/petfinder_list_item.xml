@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date listed"
+            android:text="Breed: "
             android:id="@+id/breedTextView"
             android:layout_below="@+id/petfinderNameTextView"
             android:layout_alignParentLeft="true"

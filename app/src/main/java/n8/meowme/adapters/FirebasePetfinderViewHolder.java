@@ -26,10 +26,9 @@ public class FirebasePetfinderViewHolder extends RecyclerView.ViewHolder impleme
     private static final int MAX_WIDTH = 600;
     private static final int MAX_HEIGHT = 500;
 
-    public ImageView mPetfinderImageView;
-
     View mView;
     Context mContext;
+    public ImageView mPetfinderImageView;
 
     public FirebasePetfinderViewHolder(View itemView) {
         super(itemView);
