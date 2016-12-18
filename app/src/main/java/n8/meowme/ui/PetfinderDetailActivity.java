@@ -28,12 +28,12 @@ public class PetfinderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_petfinder_detail);
         ButterKnife.bind(this);
 
-        mPetfinders = Parcels.unwrap(getIntent().getParcelableExtra("petfinders"));
+        mPetfinders = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_PETFINDERS));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
         mSource = getIntent().getStringExtra(Constants.KEY_SOURCE);
 
-        adapterViewPager = new PetfinderPagerAdapter(getSupportFragmentManager(), mPetfinders);
+        adapterViewPager = new PetfinderPagerAdapter(getSupportFragmentManager(), mPetfinders, mSource);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
 

@@ -66,7 +66,6 @@ public class SavedPetfinderListFragment extends Fragment implements OnStartDragL
 
 
         mRecyclerView.setHasFixedSize(true);
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mFirebaseAdapter);
 

@@ -43,6 +43,7 @@ public class PetfinderListFragment extends Fragment  {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
+
     private OnPetfinderSelectedListener mOnPetfinderSelectedListener;
 
     public PetfinderListFragment() {

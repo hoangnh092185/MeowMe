@@ -2,6 +2,9 @@ package n8.meowme.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,8 +21,11 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import n8.meowme.Constants;
+import n8.meowme.R;
 import n8.meowme.models.Petfinder;
 import n8.meowme.ui.PetfinderDetailActivity;
+import n8.meowme.ui.PetfinderDetailFragment;
 import n8.meowme.util.ItemTouchHelperAdapter;
 import n8.meowme.util.OnStartDragListener;
 
@@ -32,6 +38,7 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
         private Context mContext;
         private ChildEventListener mChildEventListener;
         private ArrayList<Petfinder> mPetfinders = new ArrayList<>();
+        private int mOrientation;
 
         public FirebasePetfinderListAdapter(Class<Petfinder> modelClass, int modelLayout,
                                             Class<FirebasePetfinderViewHolder> viewHolderClass,
@@ -71,6 +78,11 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
     @Override
     protected void populateViewHolder(final FirebasePetfinderViewHolder viewHolder, Petfinder model, int position) {
         viewHolder.bindPetfinder(model);
+
+        mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
+        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+            createDetailFragment(0);
+        }
         viewHolder.mPetfinderImageView.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View v, MotionEvent event){
@@ -83,13 +95,26 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(mContext, PetfinderDetailActivity.class);
-                intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("petfinders", Parcels.wrap(mPetfinders));
-                mContext.startActivity(intent);
+                int itemPosition = viewHolder.getAdapterPosition();
+                if(mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+                    createDetailFragment(itemPosition);
+                } else {
+                    Intent intent = new Intent(mContext, PetfinderDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                    intent.putExtra(Constants.EXTRA_KEY_PETFINDERS, Parcels.wrap(mPetfinders));
+                    intent.putExtra(Constants.KEY_SOURCE, Constants.SOURCE_SAVED);
+                    mContext.startActivity(intent);
+                }
+
             }
 
         });
+    }
+    private void createDetailFragment(int position) {
+        PetfinderDetailFragment detailFragment = PetfinderDetailFragment.newInstance(mPetfinders, position, Constants.SOURCE_SAVED);
+        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.petfinderDetailContainer, detailFragment);
+        ft.commit();
     }
 
     @Override
@@ -110,8 +135,9 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
         for(Petfinder petfinder : mPetfinders){
             int index = mPetfinders.indexOf(petfinder);
             DatabaseReference ref = getRef(index);
-            petfinder.setIndex(Integer.toString(index));
-            ref.setValue(petfinder);
+            ref.child("index").setValue(Integer.toString(index));
+//            petfinder.setIndex(Integer.toString(index));
+//            ref.setValue(petfinder);
         }
     }
     @Override

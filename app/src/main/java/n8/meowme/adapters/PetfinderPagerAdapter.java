@@ -15,15 +15,17 @@ import n8.meowme.ui.PetfinderDetailFragment;
  */
 public class PetfinderPagerAdapter extends FragmentPagerAdapter{
     private ArrayList<Petfinder> mPetfinders;
+    private String mSource;
 
-    public PetfinderPagerAdapter(FragmentManager fm, ArrayList<Petfinder> petfinders){
+    public PetfinderPagerAdapter(FragmentManager fm, ArrayList<Petfinder> petfinders, String source){
         super(fm);
         mPetfinders = petfinders;
+        mSource = source;
     }
 
     @Override
     public Fragment getItem(int position){
-        return PetfinderDetailFragment.newInstance(mPetfinders.get(position));
+        return PetfinderDetailFragment.newInstance(mPetfinders, position, mSource);
     }
 
     @Override
