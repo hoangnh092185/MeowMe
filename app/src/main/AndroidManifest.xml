@@ -20,23 +20,32 @@
                 <!--android:name="android.support.PARENT_ACTIVITY"-->
                 <!--android:value=".ui.MainActivity" />-->
         </activity>
+
         <activity android:name=".ui.PetfinderListActivity"
             android:label="Search">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.UserInputActivity" />
         </activity>
+
         <activity android:name=".ui.PetfinderDetailActivity"
             android:icon="@drawable/ic_home_black_24dp"
             android:label="Detail"/>
         <activity android:name=".ui.CreateAccountActivity" />
+
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SavedPetfinderListActivity"></activity>
+
+        <activity android:name=".ui.SavedPetfinderListActivity"
+            android:label="Library">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.UserInputActivity" />
+        </activity>
     </application>
 
 </manifest>

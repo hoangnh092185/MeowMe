@@ -137,8 +137,6 @@ public class FirebasePetfinderListAdapter extends FirebaseRecyclerAdapter<Petfin
             int index = mPetfinders.indexOf(petfinder);
             DatabaseReference ref = getRef(index);
             ref.child("index").setValue(Integer.toString(index));
-//            petfinder.setIndex(Integer.toString(index));
-//            ref.setValue(petfinder);
         }
     }
     @Override

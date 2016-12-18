@@ -66,7 +66,6 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
         @Bind(R.id.petfinderImageView) ImageView mPetfinderImageView;
         @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameTextView;
         @Bind(R.id.breedTextView) TextView mBreedTextView;
-//        @Bind(R.id.lastUpdatedTextView) TextView mLastUpdatedTextView;
         @Bind(R.id.ageTextView) TextView mAgeTextView;
 
         private Context mContext;
@@ -101,7 +100,6 @@ public class PetfinderListAdapter extends RecyclerView.Adapter<PetfinderListAdap
                     .into(mPetfinderImageView);
 
             mPetfinderNameTextView.setText(petfinder.getName());
-//            mLastUpdatedTextView.setText("Last listed: "+ petfinder.getLastUpdate());
             mBreedTextView.setText("Breed: " + android.text.TextUtils.join(" /", petfinder.getBreed()));
             mAgeTextView.setText("Age: " + petfinder.getAge());
         }

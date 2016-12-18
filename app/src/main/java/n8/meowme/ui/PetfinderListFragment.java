@@ -38,6 +38,7 @@ import okhttp3.Response;
 public class PetfinderListFragment extends Fragment  {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
+
     private PetfinderListAdapter mAdapter;
     public ArrayList<Petfinder> mPetfinders = new ArrayList<>();
     private SharedPreferences mSharedPreferences;
@@ -67,6 +68,8 @@ public class PetfinderListFragment extends Fragment  {
         mEditor = mSharedPreferences.edit();
 
         setHasOptionsMenu(true);
+
+
     }
 
 

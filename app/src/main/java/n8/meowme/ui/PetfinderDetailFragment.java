@@ -100,7 +100,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         if (mSource.equals(Constants.SOURCE_SAVED)) {
             inflater.inflate(R.menu.menu_photo, menu);
         } else {
-            inflater.inflate(R.menu.menu_main, menu);
+            inflater.inflate(R.menu.menu_save, menu);
         }
     }
 
