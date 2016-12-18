@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,9 +24,12 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @Bind(R.id.findPetfindersButton) Button mUserInputButton;
+
     @Bind(R.id.userInputTextView) TextView mUserInputTextView;
-    @Bind(R.id.savedListsButton) Button mSavedListsButton;
+
+    @Bind(R.id.homeTextView) TextView mHomeTextView;
+    @Bind(R.id.searchTextView) TextView mSearchTextView;
+    @Bind(R.id.listTextView) TextView mListTextView;
 
 
 
@@ -51,11 +53,15 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
             }
         };
 
-        mUserInputButton.setOnClickListener(this);
-        mSavedListsButton.setOnClickListener(this);
+//        mUserInputButton.setOnClickListener(this);
+//        mSavedListsButton.setOnClickListener(this);
 
-        Typeface userInputButtonView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
-        mUserInputButton.setTypeface(userInputButtonView);
+        mHomeTextView.setOnClickListener(this);
+        mSearchTextView.setOnClickListener(this);
+        mListTextView.setOnClickListener(this);
+
+//        Typeface userInputButtonView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
+//        mUserInputButton.setTypeface(userInputButtonView);
 
         Typeface userInputTextView = Typeface.createFromAsset(getAssets(), "fonts/Calligraffiti.ttf");
         mUserInputTextView.setTypeface(userInputTextView);
@@ -66,15 +72,18 @@ public class UserInputActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        if(v == mUserInputButton){
+        if(v == mSearchTextView){
             Intent intent = new Intent(UserInputActivity.this, PetfinderListActivity.class);
             startActivity(intent);
         }
-        if(v == mSavedListsButton){
+        if(v == mListTextView){
             Intent intent = new Intent(UserInputActivity.this, SavedPetfinderListActivity.class);
             startActivity(intent);
         }
-
+        if(v == mHomeTextView){
+            Intent intent = new Intent(UserInputActivity.this, UserInputActivity.class);
+            startActivity(intent);
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

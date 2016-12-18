@@ -20,7 +20,8 @@
                 <!--android:name="android.support.PARENT_ACTIVITY"-->
                 <!--android:value=".ui.MainActivity" />-->
         </activity>
-        <activity android:name=".ui.PetfinderListActivity">
+        <activity android:name=".ui.PetfinderListActivity"
+            android:label="Search">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.UserInputActivity" />

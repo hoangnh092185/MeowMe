@@ -48,7 +48,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     private static final int MAX_HEIGHT = 500;
 
     @Bind(R.id.petfinderImageView) ImageView mPetfinderImageLabel;
-    @Bind(R.id.homeTextView) TextView mhomeLabel;
+    @Bind(R.id.homeTextView) TextView mHomeLabel;
     @Bind(R.id.petfinderNameTextView) TextView mPetfinderNameLabel;
     @Bind(R.id.ageTextView) TextView mAgeLabel;
     @Bind(R.id.breedTextView) TextView mBreedLabel;
@@ -56,6 +56,7 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
     @Bind(R.id.phoneTextView) TextView mPhoneLabel;
     @Bind(R.id.addressTextView) TextView mAddressLabel;
     @Bind(R.id.saveTextView) TextView mSavePetLabel;
+    @Bind(R.id.listTextView) TextView mListTextView;
 
     private Petfinder mPetfinder;
 
@@ -160,18 +161,13 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
                     .centerCrop()
                     .into(mPetfinderImageLabel);
         }
-//
+
         if (mSource.equals(Constants.SOURCE_SAVED)) {
             mSavePetLabel.setVisibility(View.GONE);
         } else {
             mSavePetLabel.setOnClickListener(this);
         }
-//
-//        Picasso.with(view.getContext())
-//                    .load(mPetfinder.getImageUrl())
-//                    .resize(MAX_WIDTH, MAX_HEIGHT)
-//                    .centerCrop()
-//                    .into(mPetfinderImageLabel);
+
 
         mPetfinderNameLabel.setText(mPetfinder.getName());
         mAgeLabel.setText("Age: " + mPetfinder.getAge());
@@ -184,8 +180,8 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
         mWebsiteLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
-        mhomeLabel.setOnClickListener(this);
-//        mSavePetLabel.setOnClickListener(this);
+        mHomeLabel.setOnClickListener(this);
+        mListTextView.setOnClickListener(this);
 
 
         return view;
@@ -214,8 +210,12 @@ public class PetfinderDetailFragment extends Fragment implements View.OnClickLis
             startActivity(mapIntent);
         }
 
-        if (v == mhomeLabel){
+        if (v == mHomeLabel){
             Intent intent = new Intent(getActivity(), UserInputActivity.class);
+            startActivity(intent);
+        }
+        if(v == mListTextView){
+            Intent intent = new Intent(getActivity(), SavedPetfinderListActivity.class);
             startActivity(intent);
         }
 

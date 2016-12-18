@@ -9,8 +9,8 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
+            android:layout_width="180dp"
+            android:layout_height="160dp"
             android:id="@+id/petfinderImageView"
             android:src="@drawable/background"
             android:scaleType="centerCrop"/>
@@ -62,9 +62,10 @@
                 android:layout_height="wrap_content"
                 android:text="Age"
                 android:id="@+id/ageTextView"
-                android:layout_alignParentRight="true"
                 android:textColor="@color/colorAccent"
-                android:layout_alignParentBottom="true" />
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <ImageView
                 android:id="@+id/dragIcon"
@@ -73,10 +74,9 @@
                 android:gravity="bottom|left"
                 android:src="@drawable/ic_pets_black_24dp"
                 android:layout_gravity="right"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -15,6 +15,7 @@
         android:layout_weight="3"
         tools:layout="@layout/fragment_petfinder_list" />
 
+
     <View android:background="@color/colorAccent"
         android:layout_width="2dp"
         android:layout_height="wrap_content"/>

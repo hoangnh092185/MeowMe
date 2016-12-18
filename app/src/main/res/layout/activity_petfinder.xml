@@ -10,5 +10,8 @@
         android:name="n8.meowme.ui.PetfinderListFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_petfinder_list" />
+        tools:layout="@layout/fragment_petfinder_list"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
+
 </RelativeLayout>
